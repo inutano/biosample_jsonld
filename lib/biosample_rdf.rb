@@ -16,30 +16,36 @@ module EBI
             JSON.load(open(File.join(endpoint, id+".ldjson")))
           end
 
+          def value_reference(value_reference)
+            if value_reference
+              value_reference.map do |vr|
+                {
+                  "@type" => "DefinedTerm",
+                  "@id" => vr["url"],
+                }
+              end
+            end
+          end
+
+          def property_id(value_reference)
+            if value_reference
+              {
+                "@type" => "DefinedTerm",
+                "@id" => "http://some.one/annotates/this/property",
+              }
+            end
+          end
+
           def get(id)
             data_json = get_json(id)
             properties = data_json["mainEntity"]["additionalProperty"]
             new_props = properties.map do |prop|
-              val_ref = if prop["valueReference"]
-                prop["valueReference"].map do |vr|
-                  {
-                    "@type" => "DefinedTerm",
-                    "@id" => vr["url"],
-                  }
-                end
-              end
-              prop_id = if prop["valueReference"]
-                {
-                  "@type" => "DefinedTerm",
-                  "@id" => "http://some.one/annotates/this/property",
-                }
-              end
+              val_ref = value_reference(prop["valueReference"])
+              prop_id = property_id(prop["valueReference"])
               pr = {
                 "@type" => "PropertyValue",
                 "name" => prop["name"],
                 "value" => prop["value"],
-
-
               }
               pr["propertyID"] = prop_id if prop_id
               pr["valueReference"] = val_ref if val_ref
