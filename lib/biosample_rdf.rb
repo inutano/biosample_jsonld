@@ -52,7 +52,29 @@ module EBI
               pr
             end
             data_json["mainEntity"]["additionalProperty"] = new_props
-            JSON.dump(data_json)
+            data_json["@id"] = data_json["identifier"].sub("biosamples:","http://identifiers.org/biosample/")
+            data_json
+          end
+
+          def get_jsonld(id)
+            JSON.dump(get(id))
+          end
+
+          def schema_org_context
+            "https://schema.org/docs/jsonldcontext.json"
+          end
+
+          def jsonld_with_expanded_context(id)
+            data = get(id)
+            data["@context"] = schema_org_context
+            data["mainEntity"]["@context"] = schema_org_context
+            data
+          end
+
+          def get_ttl(id)
+            jsonld = jsonld_with_expanded_context(id)
+            tg = RDF::Graph.new << JSON::LD::API.toRdf(jsonld)
+            tg.dump(:ttl, :base_uri => "http://schema.org/")
           end
         end
       end
@@ -61,5 +83,6 @@ module EBI
 end
 
 if __FILE__ == $0
-  puts EBI::BioSchema::BioSample::API.get("SAMEA1652233")
+  puts EBI::BioSchema::BioSample::API.get_jsonld("SAMEA1652233")
+  puts EBI::BioSchema::BioSample::API.get_ttl("SAMEA1652233")
 end
