@@ -83,6 +83,11 @@ module EBI
 end
 
 if __FILE__ == $0
-  puts EBI::BioSchema::BioSample::API.get_jsonld("SAMEA1652233")
-  puts EBI::BioSchema::BioSample::API.get_ttl("SAMEA1652233")
+  path_to_biosample_id_list = ARGV.first
+  api = EBI::BioSchema::BioSample::API
+  open(path_to_biosample_id_list).readlines.each do |bsid_n|
+    bsid = bsid_n.chomp
+    open(File.join("./"+bsid+".jsonld"),"w"){|f| f.puts(api.get_jsonld(bsid)) }
+    open(File.join("./"+bsid+".ttl"),"w"){|f| f.puts(api.get_ttl(bsid)) }
+  end
 end
