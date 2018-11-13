@@ -87,7 +87,7 @@ if __FILE__ == $0
   api = EBI::BioSchema::BioSample::API
   open(path_to_biosample_id_list).readlines.each do |bsid_n|
     bsid = bsid_n.chomp
-    open(File.join("./"+bsid+".jsonld"),"w"){|f| f.puts(api.get_jsonld(bsid)) }
-    open(File.join("./"+bsid+".ttl"),"w"){|f| f.puts(api.get_ttl(bsid)) }
+    open(File.join("./data/"+bsid+".jsonld"),"w"){|f| f.puts(api.get_jsonld(bsid)) }
+    open(File.join("./data/"+bsid+".ttl"),"w"){|f| f.puts(api.get_ttl(bsid)) }
   end
 end
