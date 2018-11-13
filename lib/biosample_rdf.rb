@@ -21,7 +21,7 @@ module EBI
               value_reference.map do |vr|
                 {
                   "@type" => "DefinedTerm",
-                  "@id" => vr["url"],
+                  "url" => vr["url"],
                 }
               end
             end
@@ -31,7 +31,7 @@ module EBI
             if value_reference
               {
                 "@type" => "DefinedTerm",
-                "@id" => "http://some.one/annotates/this/property",
+                "url" => "http://some.one/annotates/this/property",
               }
             end
           end
@@ -83,11 +83,19 @@ module EBI
 end
 
 if __FILE__ == $0
-  path_to_biosample_id_list = ARGV.first
   api = EBI::BioSchema::BioSample::API
+  path_to_biosample_id_list = ARGV.first
   open(path_to_biosample_id_list).readlines.each do |bsid_n|
     bsid = bsid_n.chomp
-    open(File.join("./data/"+bsid+".jsonld"),"w"){|f| f.puts(api.get_jsonld(bsid)) }
-    open(File.join("./data/"+bsid+".ttl"),"w"){|f| f.puts(api.get_ttl(bsid)) }
+
+    # Write json-ld
+    jsonld = api.get_jsonld(bsid)
+    path_to_jsonld = File.join("./data/jsonld", bsid+".jsonld")
+    open(path_to_jsonld,"w"){|f| f.puts(jsonld) }
+
+    # Write ttl
+    ttl = api.get_ttl(bsid)
+    path_to_ttl = File.join("./data/ttl", bsid+".ttl")
+    open(path_to_ttl,"w"){|f| f.puts(ttl) }
   end
 end
