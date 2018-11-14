@@ -36,9 +36,12 @@ module EBI
             end
           end
 
-          def get(id)
-            data_json = get_json(id)
-            properties = data_json["mainEntity"]["additionalProperty"]
+          def expand_compactidentifier(compactid)
+            compactid.sub("biosamples:","http://identifiers.org/biosample/")
+          end
+
+          def modify_additional_properties(data)
+            properties = data["mainEntity"]["additionalProperty"]
             new_props = properties.map do |prop|
               val_ref = value_reference(prop["valueReference"])
               prop_id = property_id(prop["valueReference"])
@@ -51,9 +54,26 @@ module EBI
               pr["valueReference"] = val_ref if val_ref
               pr
             end
-            data_json["mainEntity"]["additionalProperty"] = new_props
-            data_json["@id"] = data_json["identifier"].sub("biosamples:","http://identifiers.org/biosample/")
-            data_json
+            data["mainEntity"]["additionalProperty"] = new_props
+            data
+          end
+
+          def modify_bioschemas(data)
+            record_id = data["identifier"]
+            data["@id"] = expand_compactidentifier(record_id)
+
+            entity_id = data["mainEntity"]["identifiers"].first
+            data["mainEntity"]["@id"] = expand_compactidentifier(entity_id)
+
+            data["mainEntity"].delete("identifiers")
+            data["mainEntity"].delete("context")
+
+            data
+          end
+
+          def get(id)
+            data_json = get_json(id)
+            modify_bioschemas(data_json)
           end
 
           def get_jsonld(id)
