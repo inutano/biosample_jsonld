@@ -21,7 +21,7 @@ module EBI
               value_reference.map do |vr|
                 {
                   "@type" => "DefinedTerm",
-                  "url" => vr["url"],
+                  "@id" => vr["url"],
                 }
               end
             end
@@ -31,7 +31,7 @@ module EBI
             if value_reference
               {
                 "@type" => "DefinedTerm",
-                "url" => "http://some.one/annotates/this/property",
+                "@id" => "http://some.one/annotates/this/property",
               }
             end
           end
