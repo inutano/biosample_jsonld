@@ -19,7 +19,7 @@ class BioSample
 
     # Add context
     data["@context"] = context
-    data["mainEntity"]["@context"] = context
+    data["mainEntity"]["@context"] = context_main
 
     # Add "@id" field with IRI
     record_id = data["identifier"]
