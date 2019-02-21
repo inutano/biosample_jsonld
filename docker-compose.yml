@@ -1,0 +1,13 @@
+version: '3'
+services:
+  biosample-ld:
+    image: ruby:2.6.1-stretch
+    container_name: biosample-ld
+    user: ${UID}
+    volumes:
+      - .:/work
+    command:
+      - "sh"
+      - "/work/entrypoint.sh"
+      - "/work"
+      - "SAMD00000345"
