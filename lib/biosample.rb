@@ -16,50 +16,55 @@ class BioSample
 
   def reshape(data_json)
     data = data_json
+    main_entity = data_json.delete("mainEntity")
 
-    # Add context
-    data["@context"] = context
-    data["mainEntity"]["@context"] = context_main
+    # Context
+    data["@context"] = jsonld_context
+
+    # Data type
+    data_type = [data, main_entity].map{|ent| ent["@type"] }.flatten
 
     # Add "@id" field with IRI
     record_id = data["identifier"]
     expended_id = expand_compactidentifier(record_id)
-    data["identifier"] = expended_id
+    data["identifier"] = record_id.sub("biosamples:","")
     data["@id"] = expended_id
 
-    # Add "mainEntity/@id" field with IRI
-    entity_id = data["mainEntity"]["identifiers"].first
-    data["mainEntity"]["@id"] = expand_compactidentifier(entity_id)
-
     # Remove unnecessary fields
-    data["mainEntity"].delete("identifiers")
-    data["mainEntity"].delete("context")
+    main_entity.delete("identifiers")
+    main_entity.delete("context")
+    main_entity.delete("@context")
 
     # Update structure of additional properties
-    ap = data["mainEntity"]["additionalProperty"]
-    data["mainEntity"]["additionalProperty"] = reshape_additional_properties(ap)
+    ap = main_entity["additionalProperty"]
+    main_entity["additionalProperty"] = reshape_additional_properties(ap)
 
-    data
+    # Change "dataset" domain type
+    ds_arr = main_entity.delete("dataset")
+    main_entity["dataset"] = ds_arr.map{|ds| {"@id" => ds, "@type" => "Dataset"} }
+
+    # Merge main entity
+    merged = data.merge(main_entity)
+    merged["@type"] = data_type
+    merged
   end
 
   def schema_org_context
     "https://schema.org/docs/jsonldcontext.json"
   end
 
-  def context
-    {
-      "@base" => "http://schema.org/",
-      "@vocab" => "http://schema.org/",
-    }
-  end
-
-  def context_main
+  def jsonld_context
     {
       "@base" => "http://schema.org/",
       "@vocab" => "http://schema.org/",
       "url" => {
-        "@id" => "url",
         "@type" => "http://www.w3.org/2001/XMLSchema#string"
+      },
+      "dateCreated" => {
+        "@type" => "http://www.w3.org/2001/XMLSchema#dateTime"
+      },
+      "dateModified" => {
+        "@type" => "http://www.w3.org/2001/XMLSchema#dateTime"
       },
       "Sample" => {
         "@id" => "http://purl.obolibrary.org/obo/OBI_0000747",
@@ -106,6 +111,12 @@ class BioSample
 
   def to_ttl
     tg = RDF::Graph.new << JSON::LD::API.toRdf(@data)
-    tg.dump(:ttl, :base_uri => "http://schema.org/", :context => context_main)
+    tg.dump(:ttl, base_uri: "http://schema.org/", prefixes: ttl_prefixes)
+  end
+
+  def ttl_prefixes
+    {
+      xsd: "http://www.w3.org/2001/XMLSchema#"
+    }
   end
 end
