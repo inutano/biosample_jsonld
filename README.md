@@ -11,6 +11,7 @@ To connect the BioSample records with different biological information sources, 
 ## How to use code
 
 ```
+$ git clone https://github.com/inutano/biosample_jsonld
 $ docker-compose up
 ```
 
