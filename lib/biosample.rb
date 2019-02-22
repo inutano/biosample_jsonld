@@ -58,16 +58,22 @@ class BioSample
       "@base" => "http://schema.org/",
       "@vocab" => "http://schema.org/",
       "url" => {
-        "@type" => "http://www.w3.org/2001/XMLSchema#string"
+        "@type" => "http://www.w3.org/2001/XMLSchema#string",
       },
       "dateCreated" => {
-        "@type" => "http://www.w3.org/2001/XMLSchema#dateTime"
+        "@type" => "http://www.w3.org/2001/XMLSchema#dateTime",
       },
       "dateModified" => {
-        "@type" => "http://www.w3.org/2001/XMLSchema#dateTime"
+        "@type" => "http://www.w3.org/2001/XMLSchema#dateTime",
       },
       "Sample" => {
         "@id" => "http://purl.obolibrary.org/obo/OBI_0000747",
+      },
+      "name" => {
+        "@type" => "http://www.w3.org/2001/XMLSchema#string",
+      },
+      "value" => {
+        "@type" => "http://www.w3.org/2001/XMLSchema#string",
       },
     }
   end
@@ -102,7 +108,7 @@ class BioSample
     val_ref.map do |vr|
       {
         "@type" => "DefinedTerm",
-        "@id" => "http://some.one/annotates/this/property",
+        "@value" => "annotated_property_name",
       }
     end
   rescue NoMethodError
