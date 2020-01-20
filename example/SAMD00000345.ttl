@@ -1,0 +1,128 @@
+@base <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://identifiers.org/biosample/SAMD00000345> a <DataRecord>,
+    <BioChemEntity>,
+    <http://purl.obolibrary.org/obo/OBI_0000747>;
+  <additionalProperty> [
+    a <PropertyValue>;
+    <name> "broad-scale environmental context";
+    <value> "n.a."
+  ], [
+    a <PropertyValue>;
+    <name> "local-scale environmental context";
+    <value> "paddy field"
+  ], [
+    a <PropertyValue>;
+    <name> "INSDC center name";
+    <value> "National Agriculture and Food Research Organization, National Institute of Livestock and Grassland Science"
+  ], [
+    a <PropertyValue>;
+    <name> "estimated size";
+    <value> "1900000"
+  ], [
+    a <PropertyValue>;
+    <name> "INSDC status";
+    <value> "live"
+  ], [
+    a <PropertyValue>;
+    <name> "project name";
+    <value> "Genome sequence of Lactobacillus oryzae SG293"
+  ], [
+    a <PropertyValue>;
+    <name> "reference for biomaterial";
+    <value> "n.a."
+  ], [
+    a <PropertyValue>;
+    <name> "environmental medium";
+    <value> "fermented rice grains"
+  ], [
+    a <PropertyValue>;
+    <name> "description title";
+    <value> "MIGS Cultured Bacterial/Archaeal sample from Lactobacillus oryzae"
+  ], [
+    a <PropertyValue>;
+    <name> "type status";
+    <value> "type strain"
+  ], [
+    a <PropertyValue>;
+    <name> "strain";
+    <value> "SG293"
+  ], [
+    a <PropertyValue>;
+    <name> "NCBI submission package";
+    <value> "MIGS.ba.5.0"
+  ], [
+    a <PropertyValue>;
+    <name> "number of replicons";
+    <value> "n.a."
+  ], [
+    a <PropertyValue>;
+    <name> "INSDC last update";
+    <value> "2019-02-17T01:33:17.383Z"
+  ], [
+    a <PropertyValue>;
+    <name> "INSDC secondary accession";
+    <value> "DRS016418"
+  ], [
+    a <PropertyValue>;
+    <name> "source material identifiers";
+    <value> "JCM 18671, DSM 26518"
+  ], [
+    a <PropertyValue>;
+    <name> "collection date";
+    <value> "2011"
+  ], [
+    a <PropertyValue>;
+    <name> "type-material";
+    <value> "type strain of Lactobacillus oryzae"
+  ], [
+    a <PropertyValue>;
+    <name> "INSDC first public";
+    <value> "2014-07-30T00:00:00Z"
+  ], [
+    a <PropertyValue>;
+    <name> "latitude and longitude";
+    <value> "n.a."
+  ], [
+    a <PropertyValue>;
+    <name> "geographic location";
+    <value> "Japan: Tochigi"
+  ], [
+    a <PropertyValue>;
+    <name> "locus_tag_prefix";
+    <value> "LOSG293"
+  ], [
+    a <PropertyValue>;
+    <name> "organism";
+    <propertyID> "Sample_organism";
+    <value> "Lactobacillus oryzae JCM 18671";
+    <valueReference> <http://purl.obolibrary.org/obo/NCBITaxon_1291743>
+  ], [
+    a <PropertyValue>;
+    <name> "isolation and growth condition";
+    <value> "n.a."
+  ], [
+    a <PropertyValue>;
+    <name> "NCBI submission model";
+    <value> "MIGS.ba"
+  ], [
+    a <PropertyValue>;
+    <name> "sample name";
+    <value> "Lactobacillus oryzae SG293"
+  ];
+  <dataset> <https://www.ebi.ac.uk/ena/data/view/SAMD00000345>;
+  <datasetPartOf> <https://www.ebi.ac.uk/biosamples/samples>;
+  <dateCreated> "2014-07-30T00:00:00Z"^^xsd:dateTime;
+  <dateModified> "2019-02-18T00:01:52.977Z"^^xsd:dateTime;
+  <description> "type strain of Lactobacillus oryzae";
+  <identifier> "SAMD00000345";
+  <isPartOf> <https://www.ebi.ac.uk/biosamples/samples>;
+  <name> "SAMD00000345";
+  <url> "https://www.ebi.ac.uk/biosamples/sample/SAMD00000345" .
+
+<http://purl.obolibrary.org/obo/NCBITaxon_1291743> a <DefinedTerm> .
+
+<https://www.ebi.ac.uk/ena/data/view/SAMD00000345> a <Dataset> .
+
+<https://www.ebi.ac.uk/biosamples/samples> a <Dataset> .
