@@ -10,9 +10,12 @@ class BioSample
   def initialize(id)
     @id = id
     @data_raw = get(@id)
-    @data = reshape(@data_raw)
   end
-  attr_accessor :data_raw, :data
+  attr_accessor :data_raw
+
+  def to_jsonld
+    reshape(@data_raw)
+  end
 
   def reshape(data_json)
     data = data_json

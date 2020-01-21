@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+$LOAD_PATH << __dir__
+
+require 'thor'
+require 'lib/biosample'
+
+class BS2LD < Thor
+  desc "json <BioSample ID>", "get raw JSON data from EBI BioSample API"
+  def json(bsid="SAMD00000345")
+    puts JSON.dump(BioSample.new(bsid).data_raw)
+  end
+
+  desc "jsonld <BioSample ID>", "generate JSON-LD"
+  def jsonld(bsid="SAMD00000345")
+    puts JSON.dump(BioSample.new(bsid).to_jsonld)
+  end
+
+  desc "turtle <BioSample ID>", "generate RDF-Turtle"
+  def turtle(bsid="SAMD00000345")
+    puts BioSample.new(bsid).to_ttl
+  end
+end
+
+BS2LD.start

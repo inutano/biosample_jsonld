@@ -20,6 +20,7 @@ GEM
       rdf (~> 3.0)
     sxp (1.0.1)
       rdf (>= 2.2, < 4.0)
+    thor (1.0.1)
 
 PLATFORMS
   ruby
@@ -27,6 +28,7 @@ PLATFORMS
 DEPENDENCIES
   json-ld
   rdf-turtle
+  thor
 
 BUNDLED WITH
    1.17.2
