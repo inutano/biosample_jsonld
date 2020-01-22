@@ -2,13 +2,52 @@ require 'nokogiri'
 
 class BioSampleXML < Nokogiri::XML::SAX::Document
   def initialize
-    prefixes
-    @node = ""
-    @id = ""
-    @properties = []
+    write_prefixes
+
+    @inner_text = ""
+
+    @sample_properties = {
+      id: "",
+      submission_date: "",
+      last_update: "",
+      description_title: "",
+      additional_properties: [],
+    }
   end
 
-  def prefixes
+  #
+  # SAX Event triggers
+  #
+
+  def start_element(name, attrs = [])
+    case name
+    when "BioSample"
+      sample(attrs)
+    when "Attribute"
+      attribute(attrs)
+    end
+  end
+
+  def characters(string)
+    @inner_text = string
+  end
+
+  def end_element(name)
+    case name
+    when "Attribute"
+      attribute_value
+    when "Title"
+      @sample_properties[:description_title] = @inner_text
+    when "BioSample"
+      output_turtle
+    end
+  end
+
+  #
+  # functions
+  #
+
+  def write_prefixes
     puts "@base <http://schema.org/> ."
     puts "@prefix bs: <http://identifiers.org/biosample/> ."
     puts "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> ."
@@ -19,68 +58,50 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
 
   def sample(attrs)
     h = attrs.to_h
-    @id = h["accession"]
-    puts "bs:#{@id} a <DataRecord>;"
-    puts "  <dateCreated> \"#{h["submission_date"]}\"^^<Date>;"
-    puts "  <dateModified> \"#{h["last_update"]}\"^^<Date>;"
-    puts "  <identifier> \"biosample:#{@id}\";"
-    puts "  <isPartOf> <https://www.ebi.ac.uk/biosamples/samples>;"
-    puts "  <mainEntity> ["
-    puts "    a <Sample>,"
-    puts "    obo:OBI_0000747;"
-    puts "    <name> \"#{@id}\";"
-    puts "    <identifier> \"biosample:#{@id}\";"
-    puts "    dct:identifier \"#{@id}\";"
-    puts "    <subjectOf> \"https://www.ebi.ac.uk/ena/data/view/#{@id}\";"
-  end
-
-  def description(str)
-    puts "    <description> \"#{str}\";"
-  end
-
-  def attributes
-    puts "    <additionalProperty> ["
-    n = @properties.size
-    @properties.each.with_index do |p,i|
-      puts "a <PropertyValue>;"
-      puts "<name> \"#{p["attribute_name"]}\";"
-      if size-1 != i
-        puts "    ], ["
-      end
-    end
-    puts "    ];"
+    @sample_properties[:id] = h["accession"]
+    @sample_properties[:submission_date] = h["submission_date"]
+    @sample_properties[:last_update] = h["last_update"]
   end
 
   def attribute(attrs)
     h = attrs.to_h
-    @properties <<
+    @sample_properties[:additional_properties] << {
+      attribute_name: h["attribute_name"],
+      harmonized_name: h["harmonized_name"],
+      display_name: h["display_name"],
+    }
   end
 
-  def start_element(name, attrs = [])
-    case name
-    when "BioSample"
-      sample(attrs)
-    when "Title"
-      @node = name
-    when "Package"
-    when "Attributes"
-      attr_start
-    when "Attribute"
-      @node = name
-      attribute(attrs)
-    when "Links"
+  def attribute_value
+    h = @sample_properties[:additional_properties].pop
+    h[:property_value] = @inner_text
+    @sample_properties[:additional_properties] << h
+  end
+
+  def output_turtle
+    puts "bs:#{@sample_properties[:id]} a <DataRecord>;"
+    puts "  <dateCreated> \"#{@sample_properties[:submission_date]}\"^^<Date>;"
+    puts "  <dateModified> \"#{@sample_properties[:last_update]}\"^^<Date>;"
+    puts "  <identifier> \"biosample:#{@sample_properties[:id]}\";"
+    puts "  <isPartOf> <https://www.ebi.ac.uk/biosamples/samples>;"
+    puts "  <mainEntity> ["
+    puts "    a <Sample>, obo:OBI_0000747;"
+    puts "    <name> \"#{@sample_properties[:id]}\";"
+    puts "    <identifier> \"biosample:#{@sample_properties[:id]}\";"
+    puts "    dct:identifier \"#{@sample_properties[:id]}\";"
+    puts "    <subjectOf> \"https://www.ebi.ac.uk/ena/data/view/#{@sample_properties[:id]}\";"
+    puts "    <description> \"#{@sample_properties[:description_title]}\";"
+
+    puts "    <additionalProperty> ["
+    n = @sample_properties[:additional_properties].size
+    @sample_properties[:additional_properties].each_with_index do |p,i|
+      puts "      a <PropertyValue>;"
+      puts "      <name> \"#{p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]}\";"
+      puts "      <value> \"#{p[:property_value]}\""
+      if i != n-1
+        puts "    ], ["
+      end
     end
-  end
-
-  def characters(string)
-    case @node
-    when "Title"
-      description(string)
-    when "Attribute"
-      attr_end
-    end
-  end
-
-  def end_element(name)
+    puts "    ] ."
   end
 end
