@@ -43,8 +43,10 @@ class BioSample
     main_entity["additionalProperty"] = reshape_additional_properties(ap)
 
     # Change "dataset" domain type
-    ds_arr = main_entity.delete("dataset")
-    main_entity["dataset"] = ds_arr.map{|ds| {"@id" => ds, "@type" => "Dataset"} }
+    if main_entity["dataset"]
+      ds_arr = main_entity.delete("dataset")
+      main_entity["dataset"] = ds_arr.map{|ds| {"@id" => ds, "@type" => "Dataset"} }
+    end
 
     # Merge main entity
     merged = data.merge(main_entity)
@@ -119,7 +121,7 @@ class BioSample
   end
 
   def to_ttl
-    tg = RDF::Graph.new << JSON::LD::API.toRdf(@data)
+    tg = RDF::Graph.new << JSON::LD::API.toRdf(@data_raw)
     tg.dump(:ttl, base_uri: "http://schema.org/", prefixes: ttl_prefixes)
   end
 
