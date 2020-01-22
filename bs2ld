@@ -3,6 +3,7 @@ $LOAD_PATH << __dir__
 
 require 'thor'
 require 'lib/biosample'
+require 'lib/xml'
 
 class BS2LD < Thor
   desc "json <BioSample ID>", "get raw JSON data from EBI BioSample API"
@@ -18,6 +19,11 @@ class BS2LD < Thor
   desc "turtle <BioSample ID>", "generate RDF-Turtle"
   def turtle(bsid="SAMD00000345")
     puts BioSample.new(bsid).to_ttl
+  end
+
+  desc "xml2ttl <BioSample XML>", "generate RDF-Turtle from BioSample XML file"
+  def xml2ttl(xml)
+    Nokogiri::XML::SAX::Parser.new(BioSampleXML.new).parse(File.open(xml))
   end
 end
 

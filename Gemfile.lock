@@ -11,7 +11,10 @@ GEM
       multi_json (~> 1.12)
       rdf (>= 2.2.8, < 4.0)
     link_header (0.0.8)
+    mini_portile2 (2.4.0)
     multi_json (1.13.1)
+    nokogiri (1.10.7)
+      mini_portile2 (~> 2.4.0)
     rdf (3.0.10)
       hamster (~> 3.0)
       link_header (~> 0.0, >= 0.0.8)
@@ -27,6 +30,7 @@ PLATFORMS
 
 DEPENDENCIES
   json-ld
+  nokogiri
   rdf-turtle
   thor
 

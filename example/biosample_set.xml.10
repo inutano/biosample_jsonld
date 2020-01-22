@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BioSampleSet>
+<BioSample submission_date="2008-04-04T08:44:24.950" last_update="2019-06-20T16:11:22.271" publication_date="2008-04-04T00:00:00.000" access="public" id="2" accession="SAMN00000002">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000002</Id>
+    <Id db="WUGSC" db_label="Sample name">19655</Id>
+    <Id db="SRA">SRS000002</Id>
+  </Ids>
+  <Description>
+    <Title>Alistipes putredinis DSM 17216</Title>
+    <Organism taxonomy_id="445970" taxonomy_name="Alistipes putredinis DSM 17216"/>
+    <Comment>
+      <Paragraph>Alistipes putredinis (GenBank Accession Number for 16S rDNA gene: L16497) is a member of the Bacteroidetes division of the domain bacteria and has been isolated from human feces. It has been found in 16S rDNA sequence-based enumerations of the colonic microbiota of adult humans (Eckburg et. al. (2005), Ley et. al. (2006)). </Paragraph>
+      <Paragraph>Keywords: GSC:MIxS;MIGS:5.0</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+    <Contacts>
+      <Contact email="lims@genome.wustl.edu"/>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model>MIGS.ba</Model>
+  </Models>
+  <Package display_name="MIGS: cultured bacteria/archaea; version 5.0">MIGS.ba.5.0</Package>
+  <Attributes>
+    <Attribute attribute_name="finishing strategy (depth of coverage)">Level 3: Improved-High-Quality Draft11.6x;20</Attribute>
+    <Attribute attribute_name="collection date" harmonized_name="collection_date" display_name="collection date">not determined</Attribute>
+    <Attribute attribute_name="estimated_size" harmonized_name="estimated_size" display_name="estimated size">2550000</Attribute>
+    <Attribute attribute_name="sop">http://hmpdacc.org/doc/CommonGeneAnnotation_SOP.pdf</Attribute>
+    <Attribute attribute_name="project_type">Reference Genome</Attribute>
+    <Attribute attribute_name="host" harmonized_name="host" display_name="host">Homo sapiens</Attribute>
+    <Attribute attribute_name="lat_lon" harmonized_name="lat_lon" display_name="latitude and longitude">not determined</Attribute>
+    <Attribute attribute_name="biome" harmonized_name="env_broad_scale" display_name="broad-scale environmental context">terrestrial biome [ENVO:00000446]</Attribute>
+    <Attribute attribute_name="misc_param: HMP body site">not determined</Attribute>
+    <Attribute attribute_name="nucleic acid extraction">not determined</Attribute>
+    <Attribute attribute_name="feature" harmonized_name="env_local_scale" display_name="local-scale environmental context">human-associated habitat [ENVO:00009003]</Attribute>
+    <Attribute attribute_name="investigation_type" harmonized_name="investigation_type" display_name="investigation type">missing</Attribute>
+    <Attribute attribute_name="host taxid" harmonized_name="host_taxid" display_name="host taxonomy ID">9606</Attribute>
+    <Attribute attribute_name="project_name" harmonized_name="project_name" display_name="project name">Alistipes putredinis DSM 17216</Attribute>
+    <Attribute attribute_name="assembly">PCAP</Attribute>
+    <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">not determined</Attribute>
+    <Attribute attribute_name="source_mat_id" harmonized_name="source_material_id" display_name="source material identifiers">DSM 17216, CCUG 45780, CIP 104286, ATCC 29800, Carlier 10203, VPI 3293</Attribute>
+    <Attribute attribute_name="material" harmonized_name="env_medium" display_name="environmental medium">biological product [ENVO:02000043]</Attribute>
+    <Attribute attribute_name="ref_biomaterial" harmonized_name="ref_biomaterial" display_name="reference for biomaterial">not determined</Attribute>
+    <Attribute attribute_name="misc_param: HMP supersite">gastrointestinal_tract</Attribute>
+    <Attribute attribute_name="num_replicons" harmonized_name="num_replicons" display_name="number of replicons">not determined</Attribute>
+    <Attribute attribute_name="sequencing method">454-GS20, Sanger</Attribute>
+    <Attribute attribute_name="isol_growth_condt" harmonized_name="isol_growth_condt" display_name="isolation and growth condition">not determined</Attribute>
+    <Attribute attribute_name="env_package" harmonized_name="env_package" display_name="environmental package">missing</Attribute>
+    <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">DSM 17216</Attribute>
+    <Attribute attribute_name="isolation-source" harmonized_name="isolation_source" display_name="isolation source">missing</Attribute>
+    <Attribute attribute_name="type-material">type strain of Alistipes putredinis</Attribute>
+  </Attributes>
+  <Links>
+    <Link type="url" label="DNA Source">http://www.dsmz.de/catalogues/details/culture/DSM-17216</Link>
+    <Link type="entrez" target="bioproject">19655</Link>
+  </Links>
+  <Status status="live" when="2013-08-05T10:18:49"/>
+</BioSample>
+<BioSample submission_date="2008-04-04T08:44:25.263" last_update="2019-06-20T16:11:22.351" publication_date="2008-04-04T00:00:00.000" access="public" id="3" accession="SAMN00000003">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000003</Id>
+    <Id db="WUGSC" db_label="Sample name">19659</Id>
+    <Id db="SRA">SRS000003</Id>
+  </Ids>
+  <Description>
+    <Title>Anaerotruncus colihominis DSM 17241</Title>
+    <Organism taxonomy_id="445972" taxonomy_name="Anaerotruncus colihominis DSM 17241">
+      <OrganismName>Anaerotruncus colihominis DSM 17241</OrganismName>
+    </Organism>
+    <Comment>
+      <Paragraph>Anaerotruncus colihominis (GenBank Accession Number for 16S rDNA gene: AJ315980) is a member of the Firmicutes division of the domain bacteria and has been isolated from human feces. It has been found in 16S rDNA sequence-based enumerations of the colonic microbiota of adult humans (Eckburg et. al. (2005), Ley et. al. (2006)). </Paragraph>
+      <Paragraph>Keywords: GSC:MIxS;MIGS:5.0</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+    <Contacts>
+      <Contact email="lims@genome.wustl.edu"/>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model>MIGS.ba</Model>
+  </Models>
+  <Package display_name="MIGS: cultured bacteria/archaea; version 5.0">MIGS.ba.5.0</Package>
+  <Attributes>
+    <Attribute attribute_name="finishing strategy (depth of coverage)">Level 3: Improved-High-Quality Draft6x;36</Attribute>
+    <Attribute attribute_name="collection date" harmonized_name="collection_date" display_name="collection date">not determined</Attribute>
+    <Attribute attribute_name="estimated_size" harmonized_name="estimated_size" display_name="estimated size">3719000</Attribute>
+    <Attribute attribute_name="sop">http://hmpdacc.org/doc/CommonGeneAnnotation_SOP.pdf</Attribute>
+    <Attribute attribute_name="project_type">Reference Genome</Attribute>
+    <Attribute attribute_name="host" harmonized_name="host" display_name="host">Homo sapiens</Attribute>
+    <Attribute attribute_name="lat_lon" harmonized_name="lat_lon" display_name="latitude and longitude">not determined</Attribute>
+    <Attribute attribute_name="biome" harmonized_name="env_broad_scale" display_name="broad-scale environmental context">terrestrial biome [ENVO:00000446]</Attribute>
+    <Attribute attribute_name="misc_param: HMP body site">not determined</Attribute>
+    <Attribute attribute_name="nucleic acid extraction">not determined</Attribute>
+    <Attribute attribute_name="feature" harmonized_name="env_local_scale" display_name="local-scale environmental context">human-associated habitat [ENVO:00009003]</Attribute>
+    <Attribute attribute_name="investigation_type" harmonized_name="investigation_type" display_name="investigation type">missing</Attribute>
+    <Attribute attribute_name="host taxid" harmonized_name="host_taxid" display_name="host taxonomy ID">9606</Attribute>
+    <Attribute attribute_name="project_name" harmonized_name="project_name" display_name="project name">Anaerotruncus colihominis DSM 17241</Attribute>
+    <Attribute attribute_name="assembly">PCAP</Attribute>
+    <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">not determined</Attribute>
+    <Attribute attribute_name="source_mat_id" harmonized_name="source_material_id" display_name="source material identifiers">DSM 17241, CCUG 45055, CIP 107754, WAL 14565</Attribute>
+    <Attribute attribute_name="material" harmonized_name="env_medium" display_name="environmental medium">biological product [ENVO:02000043]</Attribute>
+    <Attribute attribute_name="ref_biomaterial" harmonized_name="ref_biomaterial" display_name="reference for biomaterial">not determined</Attribute>
+    <Attribute attribute_name="misc_param: HMP supersite">gastrointestinal_tract</Attribute>
+    <Attribute attribute_name="num_replicons" harmonized_name="num_replicons" display_name="number of replicons">not determined</Attribute>
+    <Attribute attribute_name="sequencing method">454-GS20, Sanger</Attribute>
+    <Attribute attribute_name="isol_growth_condt" harmonized_name="isol_growth_condt" display_name="isolation and growth condition">not determined</Attribute>
+    <Attribute attribute_name="env_package" harmonized_name="env_package" display_name="environmental package">missing</Attribute>
+    <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">DSM 17241</Attribute>
+    <Attribute attribute_name="isolation-source" harmonized_name="isolation_source" display_name="isolation source">missing</Attribute>
+    <Attribute attribute_name="type-material">type strain of Anaerotruncus colihominis</Attribute>
+  </Attributes>
+  <Links>
+    <Link type="url" label="DNA Source">http://www.dsmz.de/catalogues/details/culture/DSM-17241</Link>
+    <Link type="entrez" target="bioproject" label="PRJNA19659">19659</Link>
+  </Links>
+  <Status status="live" when="2013-08-05T10:18:49"/>
+</BioSample>
+<BioSample submission_date="2011-02-24T14:14:08.053" last_update="2019-06-20T16:11:22.415" publication_date="2008-04-04T00:00:00.000" access="public" id="4" accession="SAMN00000004">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000004</Id>
+    <Id db="WUGSC" db_label="Sample name">19859</Id>
+    <Id db="SRA">SRS000004</Id>
+  </Ids>
+  <Description>
+    <Title>MIGS Cultured Bacterial/Archaeal sample from Bacteroides stercoris ATCC 43183</Title>
+    <Organism taxonomy_id="449673" taxonomy_name="Bacteroides stercoris ATCC 43183"/>
+    <Comment>
+      <Paragraph>none provided</Paragraph>
+      <Paragraph>Keywords: GSC:MIxS;MIGS:5.0</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+    <Contacts>
+      <Contact email="lims@genome.wustl.edu"/>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model>MIGS.ba</Model>
+  </Models>
+  <Package display_name="MIGS: cultured bacteria/archaea; version 5.0">MIGS.ba.5.0</Package>
+  <Attributes>
+    <Attribute attribute_name="finishing strategy (depth of coverage)">Level 3: Improved-High-Quality Draft8.8x;41</Attribute>
+    <Attribute attribute_name="collection date" harmonized_name="collection_date" display_name="collection date">not determined</Attribute>
+    <Attribute attribute_name="estimated_size" harmonized_name="estimated_size" display_name="estimated size">4009000</Attribute>
+    <Attribute attribute_name="sop">http://hmpdacc.org/doc/CommonGeneAnnotation_SOP.pdf</Attribute>
+    <Attribute attribute_name="project_type">Reference Genome</Attribute>
+    <Attribute attribute_name="host" harmonized_name="host" display_name="host">Homo sapiens</Attribute>
+    <Attribute attribute_name="lat_lon" harmonized_name="lat_lon" display_name="latitude and longitude">not determined</Attribute>
+    <Attribute attribute_name="biome" harmonized_name="env_broad_scale" display_name="broad-scale environmental context">terrestrial biome [ENVO:00000446]</Attribute>
+    <Attribute attribute_name="misc_param: HMP body site">not determined</Attribute>
+    <Attribute attribute_name="nucleic acid extraction">not determined</Attribute>
+    <Attribute attribute_name="feature" harmonized_name="env_local_scale" display_name="local-scale environmental context">human-associated habitat [ENVO:00009003]</Attribute>
+    <Attribute attribute_name="investigation_type" harmonized_name="investigation_type" display_name="investigation type">missing</Attribute>
+    <Attribute attribute_name="host taxid" harmonized_name="host_taxid" display_name="host taxonomy ID">9606</Attribute>
+    <Attribute attribute_name="project_name" harmonized_name="project_name" display_name="project name">Bacteroides stercoris ATCC 43183</Attribute>
+    <Attribute attribute_name="assembly">Newbler, PCAP</Attribute>
+    <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">not determined</Attribute>
+    <Attribute attribute_name="source_mat_id" harmonized_name="source_material_id" display_name="source material identifiers">ATCC 43183, CIP 104203T, JCM 9496</Attribute>
+    <Attribute attribute_name="material" harmonized_name="env_medium" display_name="environmental medium">biological product [ENVO:02000043]</Attribute>
+    <Attribute attribute_name="ref_biomaterial" harmonized_name="ref_biomaterial" display_name="reference for biomaterial">not determined</Attribute>
+    <Attribute attribute_name="misc_param: HMP supersite">gastrointestinal_tract</Attribute>
+    <Attribute attribute_name="num_replicons" harmonized_name="num_replicons" display_name="number of replicons">not determined</Attribute>
+    <Attribute attribute_name="sequencing method">454-GS20, Sanger</Attribute>
+    <Attribute attribute_name="isol_growth_condt" harmonized_name="isol_growth_condt" display_name="isolation and growth condition">not determined</Attribute>
+    <Attribute attribute_name="env_package" harmonized_name="env_package" display_name="environmental package">missing</Attribute>
+    <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">ATCC 43183</Attribute>
+    <Attribute attribute_name="isolation-source" harmonized_name="isolation_source" display_name="isolation source">missing</Attribute>
+    <Attribute attribute_name="type-material">type strain of Bacteroides stercoris</Attribute>
+  </Attributes>
+  <Links>
+    <Link type="url" label="DNA Source">http://www.atcc.org/ATCCAdvancedCatalogSearch/ProductDetails/tabid/452/Default.aspx?ATCCNum=43183&amp;Template=bacteria</Link>
+    <Link type="entrez" target="bioproject">19859</Link>
+  </Links>
+  <Status status="live" when="2013-08-05T10:18:49"/>
+</BioSample>
+<BioSample submission_date="2008-04-04T08:44:25.780" last_update="2013-06-12T08:26:56.080" publication_date="2008-04-04T08:44:25.967" access="public" id="5" accession="SAMN00000005">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000005</Id>
+    <Id db="WUGSC" db_label="Sample name">Biomphalaria glabrata</Id>
+    <Id db="SRA">SRS000005</Id>
+  </Ids>
+  <Description>
+    <Title>Generic sample from Biomphalaria glabrata</Title>
+    <Organism taxonomy_id="6526" taxonomy_name="Biomphalaria glabrata"/>
+    <Comment>
+      <Paragraph>none provided</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+    <Contacts>
+      <Contact email="lims@genome.wustl.edu"/>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model>Generic</Model>
+  </Models>
+  <Package display_name="Generic">Generic.1.0</Package>
+  <Attributes/>
+  <Status status="live" when="2008-04-04T08:44:25.780"/>
+</BioSample>
+<BioSample submission_date="2008-04-04T08:44:26.153" last_update="2013-06-12T08:26:56.570" publication_date="2008-04-04T08:44:26.233" access="public" id="6" accession="SAMN00000006">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000006</Id>
+    <Id db="WUGSC" db_label="Sample name">Callithrix jacchus</Id>
+    <Id db="SRA">SRS000006</Id>
+  </Ids>
+  <Description>
+    <Title>Generic sample from Callithrix jacchus</Title>
+    <Organism taxonomy_id="9483" taxonomy_name="Callithrix jacchus"/>
+    <Comment>
+      <Paragraph>none provided</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+    <Contacts>
+      <Contact email="lims@genome.wustl.edu"/>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model>Generic</Model>
+  </Models>
+  <Package display_name="Generic">Generic.1.0</Package>
+  <Attributes/>
+  <Status status="live" when="2008-04-04T08:44:26.153"/>
+</BioSample>
+<BioSample submission_date="2008-04-04T08:44:26.436" last_update="2019-06-20T16:11:22.471" publication_date="2008-04-04T00:00:00.000" access="public" id="7" accession="SAMN00000007">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000007</Id>
+    <Id db="WUGSC" db_label="Sample name">19663</Id>
+    <Id db="SRA">SRS000007</Id>
+  </Ids>
+  <Description>
+    <Title>Clostridium ramosum DSM 1402</Title>
+    <Organism taxonomy_id="445974" taxonomy_name="Erysipelatoclostridium ramosum DSM 1402"/>
+    <Comment>
+      <Paragraph>Clostridium ramosum (GenBank Accession Number for 16S rDNA gene: X73440) is a member of the Firmicutes division of the domain bacteria and has been isolated from human adult as well as infant feces. </Paragraph>
+      <Paragraph>Keywords: GSC:MIxS;MIGS:5.0</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+    <Contacts>
+      <Contact email="lims@genome.wustl.edu"/>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model>MIGS.ba</Model>
+  </Models>
+  <Package display_name="MIGS: cultured bacteria/archaea; version 5.0">MIGS.ba.5.0</Package>
+  <Attributes>
+    <Attribute attribute_name="finishing strategy (depth of coverage)">Level 3: Improved-High-Quality Draft10x;36</Attribute>
+    <Attribute attribute_name="collection date" harmonized_name="collection_date" display_name="collection date">not determined</Attribute>
+    <Attribute attribute_name="estimated_size" harmonized_name="estimated_size" display_name="estimated size">3235000</Attribute>
+    <Attribute attribute_name="sop">http://hmpdacc.org/doc/CommonGeneAnnotation_SOP.pdf</Attribute>
+    <Attribute attribute_name="project_type">Reference Genome</Attribute>
+    <Attribute attribute_name="host" harmonized_name="host" display_name="host">Homo sapiens</Attribute>
+    <Attribute attribute_name="lat_lon" harmonized_name="lat_lon" display_name="latitude and longitude">not determined</Attribute>
+    <Attribute attribute_name="biome" harmonized_name="env_broad_scale" display_name="broad-scale environmental context">terrestrial biome [ENVO:00000446]</Attribute>
+    <Attribute attribute_name="misc_param: HMP body site">not determined</Attribute>
+    <Attribute attribute_name="nucleic acid extraction">not determined</Attribute>
+    <Attribute attribute_name="feature" harmonized_name="env_local_scale" display_name="local-scale environmental context">human-associated habitat [ENVO:00009003]</Attribute>
+    <Attribute attribute_name="investigation_type" harmonized_name="investigation_type" display_name="investigation type">missing</Attribute>
+    <Attribute attribute_name="host taxid" harmonized_name="host_taxid" display_name="host taxonomy ID">9606</Attribute>
+    <Attribute attribute_name="project_name" harmonized_name="project_name" display_name="project name">Clostridium ramosum VPI 0427, DSM 1402</Attribute>
+    <Attribute attribute_name="assembly">PCAP</Attribute>
+    <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">not determined</Attribute>
+    <Attribute attribute_name="source_mat_id" harmonized_name="source_material_id" display_name="source material identifiers">DSM 1402, ATCC 25582, NCIB 10673</Attribute>
+    <Attribute attribute_name="material" harmonized_name="env_medium" display_name="environmental medium">biological product [ENVO:02000043]</Attribute>
+    <Attribute attribute_name="ref_biomaterial" harmonized_name="ref_biomaterial" display_name="reference for biomaterial">not determined</Attribute>
+    <Attribute attribute_name="misc_param: HMP supersite">gastrointestinal_tract</Attribute>
+    <Attribute attribute_name="num_replicons" harmonized_name="num_replicons" display_name="number of replicons">not determined</Attribute>
+    <Attribute attribute_name="sequencing method">454-GS20, Sanger</Attribute>
+    <Attribute attribute_name="isol_growth_condt" harmonized_name="isol_growth_condt" display_name="isolation and growth condition">not determined</Attribute>
+    <Attribute attribute_name="env_package" harmonized_name="env_package" display_name="environmental package">missing</Attribute>
+    <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">DSM 1402</Attribute>
+    <Attribute attribute_name="isolation-source" harmonized_name="isolation_source" display_name="isolation source">missing</Attribute>
+    <Attribute attribute_name="type-material">type strain of Erysipelatoclostridium ramosum</Attribute>
+  </Attributes>
+  <Links>
+    <Link type="url" label="DNA Source">http://www.dsmz.de/catalogues/details/culture/DSM-1402</Link>
+    <Link type="entrez" target="bioproject">19663</Link>
+  </Links>
+  <Status status="live" when="2013-08-05T10:18:49"/>
+</BioSample>
+<BioSample submission_date="2011-02-24T14:12:13.853" last_update="2019-06-20T16:11:22.519" publication_date="2008-04-04T00:00:00.000" access="public" id="8" accession="SAMN00000008">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000008</Id>
+    <Id db="WUGSC" db_label="Sample name">18155</Id>
+    <Id db="SRA">SRS000008</Id>
+  </Ids>
+  <Description>
+    <Title>MIGS Cultured Bacterial/Archaeal sample from Dorea formicigenerans ATCC 27755</Title>
+    <Organism taxonomy_id="411461" taxonomy_name="Dorea formicigenerans ATCC 27755"/>
+    <Comment>
+      <Paragraph>Dorea formicigenerans (GenBank Accession Number for 16S rRNA gene: L34619) is a member of the Firmicutes division of the domain bacteria. In one comprehensive 16S rDNA sequence- based enumeration of the colonic microbiota of three healthy adult humans, it represents, on average, 0.617% of all 16S rDNA sequences and 1.215% of the sequences in its division (Eckburg et. al. (2005)).</Paragraph>
+      <Paragraph>Keywords: GSC:MIxS;MIGS:5.0</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+  </Owner>
+  <Models>
+    <Model>MIGS.ba</Model>
+  </Models>
+  <Package display_name="MIGS: cultured bacteria/archaea; version 5.0">MIGS.ba.5.0</Package>
+  <Attributes>
+    <Attribute attribute_name="finishing strategy (depth of coverage)">Level 3: Improved-High-Quality Draft7.5x;16</Attribute>
+    <Attribute attribute_name="collection date" harmonized_name="collection_date" display_name="collection date">not determined</Attribute>
+    <Attribute attribute_name="estimated_size" harmonized_name="estimated_size" display_name="estimated size">3186000</Attribute>
+    <Attribute attribute_name="sop">http://hmpdacc.org/doc/CommonGeneAnnotation_SOP.pdf</Attribute>
+    <Attribute attribute_name="project_type">Reference Genome</Attribute>
+    <Attribute attribute_name="host" harmonized_name="host" display_name="host">Homo sapiens</Attribute>
+    <Attribute attribute_name="lat_lon" harmonized_name="lat_lon" display_name="latitude and longitude">not determined</Attribute>
+    <Attribute attribute_name="biome" harmonized_name="env_broad_scale" display_name="broad-scale environmental context">terrestrial biome [ENVO:00000446]</Attribute>
+    <Attribute attribute_name="misc_param: HMP body site">not determined</Attribute>
+    <Attribute attribute_name="nucleic acid extraction">not determined</Attribute>
+    <Attribute attribute_name="feature" harmonized_name="env_local_scale" display_name="local-scale environmental context">human-associated habitat [ENVO:00009003]</Attribute>
+    <Attribute attribute_name="investigation_type" harmonized_name="investigation_type" display_name="investigation type">missing</Attribute>
+    <Attribute attribute_name="host taxid" harmonized_name="host_taxid" display_name="host taxonomy ID">9606</Attribute>
+    <Attribute attribute_name="project_name" harmonized_name="project_name" display_name="project name">Dorea formicigenerans ATCC 27755</Attribute>
+    <Attribute attribute_name="assembly">PCAP</Attribute>
+    <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">not determined</Attribute>
+    <Attribute attribute_name="source_mat_id" harmonized_name="source_material_id" display_name="source material identifiers">ATCC 27755</Attribute>
+    <Attribute attribute_name="material" harmonized_name="env_medium" display_name="environmental medium">biological product [ENVO:02000043]</Attribute>
+    <Attribute attribute_name="ref_biomaterial" harmonized_name="ref_biomaterial" display_name="reference for biomaterial">not determined</Attribute>
+    <Attribute attribute_name="misc_param: HMP supersite">gastrointestinal_tract</Attribute>
+    <Attribute attribute_name="num_replicons" harmonized_name="num_replicons" display_name="number of replicons">not determined</Attribute>
+    <Attribute attribute_name="sequencing method">454, Sanger</Attribute>
+    <Attribute attribute_name="isol_growth_condt" harmonized_name="isol_growth_condt" display_name="isolation and growth condition">not determined</Attribute>
+    <Attribute attribute_name="env_package" harmonized_name="env_package" display_name="environmental package">missing</Attribute>
+    <Attribute attribute_name="isolation-source" harmonized_name="isolation_source" display_name="isolation source">missing</Attribute>
+    <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">ATCC 27755</Attribute>
+    <Attribute attribute_name="type-material">type strain of Dorea formicigenerans</Attribute>
+  </Attributes>
+  <Links>
+    <Link type="url" label="DNA Source">http://www.atcc.org/ATCCAdvancedCatalogSearch/ProductDetails/tabid/452/Default.aspx?ATCCNum=27755&amp;Template=bacteria</Link>
+    <Link type="entrez" target="bioproject">18155</Link>
+  </Links>
+  <Status status="live" when="2013-08-05T10:18:49"/>
+</BioSample>
+<BioSample submission_date="2008-04-04T08:44:27.233" last_update="2013-06-12T08:42:16.823" publication_date="2008-04-04T08:44:27.670" access="public" id="9" accession="SAMN00000009">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000009</Id>
+    <Id db="WUGSC" db_label="Sample name">Monodelphis domestica</Id>
+    <Id db="SRA">SRS000009</Id>
+  </Ids>
+  <Description>
+    <Title>Generic sample from Monodelphis domestica</Title>
+    <Organism taxonomy_id="13616" taxonomy_name="Monodelphis domestica"/>
+    <Comment>
+      <Paragraph>none provided</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+    <Contacts>
+      <Contact email="lims@genome.wustl.edu"/>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model>Generic</Model>
+  </Models>
+  <Package display_name="Generic">Generic.1.0</Package>
+  <Attributes/>
+  <Status status="live" when="2008-04-04T08:44:27.233"/>
+</BioSample>
+<BioSample submission_date="2008-04-04T08:44:27.873" last_update="2013-06-12T08:42:30.383" publication_date="2008-04-04T08:44:28.043" access="public" id="10" accession="SAMN00000010">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000010</Id>
+    <Id db="WUGSC" db_label="Sample name">Ruminococcus sp. GM2/1</Id>
+    <Id db="SRA">SRS000010</Id>
+  </Ids>
+  <Description>
+    <Title>Generic sample from Ruminococcus sp. GM2/1</Title>
+    <Organism taxonomy_id="451639" taxonomy_name="Ruminococcus sp. GM2/1"/>
+    <Comment>
+      <Paragraph>none provided</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+    <Contacts>
+      <Contact email="lims@genome.wustl.edu"/>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model>Generic</Model>
+  </Models>
+  <Package display_name="Generic">Generic.1.0</Package>
+  <Attributes>
+    <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">GM2/1</Attribute>
+  </Attributes>
+  <Status status="live" when="2008-04-04T08:44:27.873"/>
+</BioSample>
+<BioSample submission_date="2008-04-04T08:44:28.233" last_update="2019-06-20T16:11:22.557" publication_date="2008-04-04T00:00:00.000" access="public" id="11" accession="SAMN00000011">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000011</Id>
+    <Id db="WUGSC" db_label="Sample name">Roseburia faecis M72/1</Id>
+    <Id db="SRA">SRS000011</Id>
+  </Ids>
+  <Description>
+    <Title>Generic sample from Roseburia faecis M72/1</Title>
+    <Organism taxonomy_id="451638" taxonomy_name="Roseburia faecis M72/1"/>
+    <Comment>
+      <Paragraph>Roseburia faecis M72/1 (GenBank Accession Number for 16S rDNA gene: AY305310) is a member of the division Firmicutes. In one comprehensive 16S rDNA sequence-based enumeration of the colonic microbiota of three healthy adult humans, it represents, on average, 0.355% of all 16S rDNA sequences and 0.699% of the sequences in its division (Eckburg et. al. (2005)). </Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="WUGSC">Washington University, Genome Sequencing Center</Name>
+    <Contacts>
+      <Contact email="lims@genome.wustl.edu"/>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model>Generic</Model>
+  </Models>
+  <Package display_name="Generic">Generic.1.0</Package>
+  <Attributes>
+    <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">M72/1</Attribute>
+    <Attribute attribute_name="type-material">type strain of Roseburia faecis</Attribute>
+  </Attributes>
+  <Status status="live" when="2008-04-04T08:44:28.233"/>
+</BioSample>
