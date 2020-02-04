@@ -103,5 +103,6 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
       end
     end
     puts "    ] ."
+    puts "  ] ."
   end
 end
