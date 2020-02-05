@@ -25,6 +25,7 @@ cat "${XML_PATH}" | grep -n '</BioSample>' |\
   split -l 5000 -d - "bs."
 
 # Run on UGE
+source "/home/geadmin/UGED/uged/common/settings.sh"
 find ${WORK_DIR} -name "bs.*" | sort | while read jobconf; do
   jobname=$(basename ${jobconf})
   qsub -N "${jobname}" -o /dev/null -pe def_slot 1 -l s_vmem=4G -l mem_req=4G \
