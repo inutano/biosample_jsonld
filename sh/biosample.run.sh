@@ -16,13 +16,17 @@ mkdir -p "${WORK_DIR}" && cd "${WORK_DIR}"
 # Unarchive biosample_set.xml.gz
 GZ_PATH="${1}"
 XML_PATH="${WORK_DIR}/$(basename "${GZ_PATH}" .gz)"
-gunzip -c "${GZ_PATH}" > "${XML_PATH}"
+if [[ ! -e "${XML_PATH}" ]]; then
+  gunzip -c "${GZ_PATH}" > "${XML_PATH}"
+fi
 
 # Create jobconf file
 cd "${WORK_DIR}"
-cat "${XML_PATH}" | grep -n '</BioSample>' |\
-  awk -F':' 'BEGIN{ start=1 } NR%10000==0 { print start "," $1 "p"; start=$1+1 }' |\
-  split -l 5000 -d - "bs."
+if [[ ! -e "${WORK_DIR}/bs.00" ]]; then
+  cat "${XML_PATH}" | grep -n '</BioSample>' |\
+    awk -F':' 'BEGIN{ start=1 } NR%10000==0 { print start "," $1 "p"; start=$1+1 }' |\
+    split -l 5000 -d - "bs."
+fi
 
 # Run on UGE
 source "/home/geadmin/UGED/uged/common/settings.sh"
