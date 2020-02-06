@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # usage:
 #   biosample.run.sh <path to biosample_set.xml.gz>

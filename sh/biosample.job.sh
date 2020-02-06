@@ -1,5 +1,5 @@
-#!/bin/sh
-#$ -S /bin/sh -j y
+#!/bin/bash
+#$ -S /bin/bash -j y
 set -eux
 
 XML_PATH="${1}"
@@ -19,7 +19,7 @@ if [[ ! -e "${ttl_path}" ]]; then
   export PATH="/home/inutano/.rbenv/bin:${PATH}"
   eval "$(rbenv init -)"
   # Generate a subset of xml and generate ttl
-  cd "/home/inutano/repos/biosamepl_jsonld"
+  cd "/home/inutano/repos/biosample_jsonld"
   ./bs2ld xml2ttl <(cat "${XML_PATH}" | sed -n "${job_param}") |\
     grep -v "^@prefix" > "${ttl_path}"
 fi
