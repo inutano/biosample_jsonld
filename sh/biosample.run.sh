@@ -9,7 +9,7 @@ set -eux
 # Directories
 BASE_DIR="/home/inutano/repos/biosample_jsonld"
 DATA_DIR="${BASE_DIR}/data"
-WORK_DIR="${DATA_DIR}/$(date +%Y%d%m)"
+WORK_DIR="${DATA_DIR}/$(date +%Y%m%d)"
 SH_DIR="${BASE_DIR}/sh"
 mkdir -p "${WORK_DIR}" && cd "${WORK_DIR}"
 
