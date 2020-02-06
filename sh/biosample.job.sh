@@ -21,5 +21,5 @@ if [[ ! -e "${ttl_path}" ]]; then
   # Generate a subset of xml and generate ttl
   cd "/home/inutano/repos/biosample_jsonld"
   ./bs2ld xml2ttl <(cat "${XML_PATH}" | sed -n "${job_param}") |\
-    grep -v "^@prefix" > "${ttl_path}"
+    | grep -v "^@base" | grep -v "^@prefix" > "${ttl_path}"
 fi
