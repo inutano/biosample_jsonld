@@ -34,5 +34,5 @@ find ${WORK_DIR} -name "bs.*" | sort | while read jobconf; do
   jobname=$(basename ${jobconf})
   qsub -N "${jobname}" -o /dev/null -pe def_slot 1 -l s_vmem=4G -l mem_req=4G \
     -t 1-$(wc -l "${jobconf}" | awk '$0=$1'):1 \
-    "${SH_DIR}/biosample.run.sh" "${XML_PATH}" "${jobconf}"
+    "${SH_DIR}/biosample.job.sh" "${XML_PATH}" "${jobconf}"
 done
