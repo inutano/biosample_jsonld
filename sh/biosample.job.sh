@@ -20,5 +20,5 @@ if [[ ! -e "${ttl_path}" ]]; then
   eval "$(rbenv init -)"
   # Generate a subset of xml and generate ttl
   cd "/home/inutano/repos/biosample_jsonld"
-  ./bs2ld xml2ttl <(cat "${XML_PATH}" | sed -n "${job_param}") > "${ttl_path}"
+  ./bs2ld xml2ttl <(cat <(echo "<BioSampleSet>") <(cat "${XML_PATH}" | sed -n "${job_param}")) > "${ttl_path}"
 fi
