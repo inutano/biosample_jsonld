@@ -15,9 +15,6 @@ job_name="biosample.$(echo ${job_param} | sed -e 's:,.*$::')"
 ttl_path="${TTL_DIR}/${job_name}.ttl"
 
 if [[ ! -e "${ttl_path}" ]]; then
-  # Load rbenv
-  export PATH="/home/inutano/.rbenv/bin:${PATH}"
-  eval "$(rbenv init -)"
   # Generate a subset of xml and generate ttl
   cd "/home/inutano/repos/biosample_jsonld"
   ./bs2ld xml2ttl <(cat <(echo "<BioSampleSet>") <(cat "${XML_PATH}" | sed -n "${job_param}")) > "${ttl_path}"
