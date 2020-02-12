@@ -100,17 +100,28 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   end
 
   def output_turtle
-    puts "b:#{@sample[:id]} a :DataRecord; :dateCreated \"#{@sample[:submission_date]}\"^^:Date; :dateModified \"#{@sample[:last_update]}\"^^:Date;"
-    puts "  :identifier \"biosample:#{@sample[:id]}\"; :isPartOf [ a :Dataset ; :identifier e:samples ];"
-    puts "  :mainEntity [ a :Sample, o:OBI_0000747; :name \"#{@sample[:id]}\";  :description \"#{@sample[:description_title]}\";"
-    puts "    :identifier \"biosample:#{@sample[:id]}\"; d:identifier \"#{@sample[:id]}\";"
-    puts "    :additionalProperty"
+    out = ""
+    out << "b:#{@sample[:id]} a :DataRecord;"
+    out << " :dateCreated \"#{@sample[:submission_date]}\"^^:Date;"
+    out << " :dateModified \"#{@sample[:last_update]}\"^^:Date;"
+    out << " :identifier \"biosample:#{@sample[:id]}\";"
+    out << " :isPartOf [ a :Dataset ; :identifier e:samples ];"
+    out << " :mainEntity [ a :Sample, o:OBI_0000747;"
+    out << "  :name \"#{@sample[:id]}\";"
+    out << "  :description \"#{@sample[:description_title]}\";"
+    out << "  :identifier \"biosample:#{@sample[:id]}\";"
+    out << "  d:identifier \"#{@sample[:id]}\";"
+    out << "  :additionalProperty"
+
     n = @sample[:additional_properties].size
     @sample[:additional_properties].each_with_index do |p,i|
       v = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
       c = i != n-1 ? "," : ""
-      puts "     [ a :PropertyValue; :name \"#{v}\"; :value \"#{p[:property_value]}\" ]#{c}"
+      out << "   [ a :PropertyValue; :name \"#{v}\"; :value \"#{p[:property_value]}\" ]#{c}"
     end
-    puts "  ]."
+
+    out << " ]."
+
+    puts out
   end
 end
