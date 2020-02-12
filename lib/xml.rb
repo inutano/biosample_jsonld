@@ -78,27 +78,6 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     @sample[:additional_properties] << h
   end
 
-  def output_turtle_small
-    puts "b:#{@sample[:id]} a :DataRecord;"
-    puts "  :dateCreated \"#{@sample[:submission_date]}\"^^:Date;"
-    puts "  :dateModified> \"#{@sample[:last_update]}\"^^:Date;"
-    puts "  :mainEntity ["
-    puts "    a :Sample, o:OBI_0000747;"
-    puts "    d:identifier \"#{@sample[:id]}\";"
-    puts "    :additionalProperty ["
-    n = @sample[:additional_properties].size
-    @sample[:additional_properties].each_with_index do |p,i|
-      puts "      a :PropertyValue;"
-      puts "      :name \"#{p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]}\";"
-      puts "      :value \"#{p[:property_value]}\""
-      if i != n-1
-        puts "    ], ["
-      end
-    end
-    puts "    ] ."
-    puts "  ] ."
-  end
-
   def output_turtle
     out = ""
     out << "b:#{@sample[:id]} a :DataRecord;"
