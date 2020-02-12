@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # usage:
 #   biosample.run.sh <path to biosample_set.xml.gz>
@@ -9,7 +9,7 @@ set -eux
 # Directories
 BASE_DIR="/home/inutano/repos/biosample_jsonld"
 DATA_DIR="${BASE_DIR}/data"
-WORK_DIR="${DATA_DIR}/$(date +%Y%d%m)"
+WORK_DIR="${DATA_DIR}/$(date +%Y%m%d)"
 SH_DIR="${BASE_DIR}/sh"
 mkdir -p "${WORK_DIR}" && cd "${WORK_DIR}"
 
@@ -34,5 +34,5 @@ find ${WORK_DIR} -name "bs.*" | sort | while read jobconf; do
   jobname=$(basename ${jobconf})
   qsub -N "${jobname}" -o /dev/null -pe def_slot 1 -l s_vmem=4G -l mem_req=4G \
     -t 1-$(wc -l "${jobconf}" | awk '$0=$1'):1 \
-    "${SH_DIR}/biosample.run.sh" "${XML_PATH}" "${jobconf}"
+    "${SH_DIR}/biosample.job.sh" "${XML_PATH}" "${jobconf}"
 done
