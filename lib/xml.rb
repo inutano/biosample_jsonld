@@ -48,11 +48,11 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   #
 
   def write_prefixes
-    puts "@base <http://schema.org/> ."
-    puts "@prefix bs: <http://identifiers.org/biosample/> ."
-    puts "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> ."
-    puts "@prefix obo: <http://purl.obolibrary.org/obo/> ."
-    puts "@prefix dct: <http://purl.obolibrary.org/obo/> ."
+    puts "@prefix : <http://schema.org/> ."
+    puts "@prefix e: <https://www.ebi.ac.uk/biosamples/> ."
+    puts "@prefix b: <http://identifiers.org/biosample/> ."
+    puts "@prefix o: <http://purl.obolibrary.org/obo/> ."
+    puts "@prefix d: <http://purl.org/dc/terms/> ."
     puts ""
   end
 
@@ -78,26 +78,47 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     @sample_properties[:additional_properties] << h
   end
 
-  def output_turtle
-    puts "bs:#{@sample_properties[:id]} a <DataRecord>;"
-    puts "  <dateCreated> \"#{@sample_properties[:submission_date]}\"^^<Date>;"
-    puts "  <dateModified> \"#{@sample_properties[:last_update]}\"^^<Date>;"
-    puts "  <identifier> \"biosample:#{@sample_properties[:id]}\";"
-    puts "  <isPartOf> <https://www.ebi.ac.uk/biosamples/samples>;"
-    puts "  <mainEntity> ["
-    puts "    a <Sample>, obo:OBI_0000747;"
-    puts "    <name> \"#{@sample_properties[:id]}\";"
-    puts "    <identifier> \"biosample:#{@sample_properties[:id]}\";"
-    puts "    dct:identifier \"#{@sample_properties[:id]}\";"
-    puts "    <subjectOf> \"https://www.ebi.ac.uk/ena/data/view/#{@sample_properties[:id]}\";"
-    puts "    <description> \"#{@sample_properties[:description_title]}\";"
-
-    puts "    <additionalProperty> ["
+  def output_turtle_small
+    puts "b:#{@sample_properties[:id]} a :DataRecord;"
+    puts "  :dateCreated \"#{@sample_properties[:submission_date]}\"^^:Date;"
+    puts "  :dateModified> \"#{@sample_properties[:last_update]}\"^^:Date;"
+    puts "  :mainEntity ["
+    puts "    a :Sample, o:OBI_0000747;"
+    puts "    d:identifier \"#{@sample_properties[:id]}\";"
+    puts "    :additionalProperty ["
     n = @sample_properties[:additional_properties].size
     @sample_properties[:additional_properties].each_with_index do |p,i|
-      puts "      a <PropertyValue>;"
-      puts "      <name> \"#{p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]}\";"
-      puts "      <value> \"#{p[:property_value]}\""
+      puts "      a :PropertyValue;"
+      puts "      :name \"#{p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]}\";"
+      puts "      :value \"#{p[:property_value]}\""
+      if i != n-1
+        puts "    ], ["
+      end
+    end
+    puts "    ] ."
+    puts "  ] ."
+  end
+
+  def output_turtle
+    puts "b:#{@sample_properties[:id]} a :DataRecord;"
+    puts "  :dateCreated \"#{@sample_properties[:submission_date]}\"^^:Date;"
+    puts "  :dateModified> \"#{@sample_properties[:last_update]}\"^^:Date;"
+    puts "  :identifier \"biosample:#{@sample_properties[:id]}\";"
+    puts "  :isPartOf e:samples;"
+    puts "  :mainEntity ["
+    puts "    a :Sample, o:OBI_0000747;"
+    puts "    :name \"#{@sample_properties[:id]}\";"
+    puts "    :identifier \"biosample:#{@sample_properties[:id]}\";"
+    puts "    d:identifier \"#{@sample_properties[:id]}\";"
+    puts "    :subjectOf \"https://www.ebi.ac.uk/ena/data/view/#{@sample_properties[:id]}\";"
+    puts "    :description \"#{@sample_properties[:description_title]}\";"
+
+    puts "    :additionalProperty ["
+    n = @sample_properties[:additional_properties].size
+    @sample_properties[:additional_properties].each_with_index do |p,i|
+      puts "      a :PropertyValue;"
+      puts "      :name \"#{p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]}\";"
+      puts "      :value \"#{p[:property_value]}\""
       if i != n-1
         puts "    ], ["
       end
