@@ -6,7 +6,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
 
     @inner_text = ""
 
-    @sample_properties = {
+    @sample = {
       id: "",
       submission_date: "",
       last_update: "",
@@ -37,7 +37,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     when "Attribute"
       attribute_value
     when "Title"
-      @sample_properties[:description_title] = @inner_text
+      @sample[:description_title] = @inner_text
     when "BioSample"
       output_turtle
     end
@@ -58,14 +58,14 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
 
   def sample(attrs)
     h = attrs.to_h
-    @sample_properties[:id] = h["accession"]
-    @sample_properties[:submission_date] = h["submission_date"]
-    @sample_properties[:last_update] = h["last_update"]
+    @sample[:id] = h["accession"]
+    @sample[:submission_date] = h["submission_date"]
+    @sample[:last_update] = h["last_update"]
   end
 
   def attribute(attrs)
     h = attrs.to_h
-    @sample_properties[:additional_properties] << {
+    @sample[:additional_properties] << {
       attribute_name: h["attribute_name"],
       harmonized_name: h["harmonized_name"],
       display_name: h["display_name"],
@@ -73,21 +73,21 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   end
 
   def attribute_value
-    h = @sample_properties[:additional_properties].pop
+    h = @sample[:additional_properties].pop
     h[:property_value] = @inner_text
-    @sample_properties[:additional_properties] << h
+    @sample[:additional_properties] << h
   end
 
   def output_turtle_small
-    puts "b:#{@sample_properties[:id]} a :DataRecord;"
-    puts "  :dateCreated \"#{@sample_properties[:submission_date]}\"^^:Date;"
-    puts "  :dateModified> \"#{@sample_properties[:last_update]}\"^^:Date;"
+    puts "b:#{@sample[:id]} a :DataRecord;"
+    puts "  :dateCreated \"#{@sample[:submission_date]}\"^^:Date;"
+    puts "  :dateModified> \"#{@sample[:last_update]}\"^^:Date;"
     puts "  :mainEntity ["
     puts "    a :Sample, o:OBI_0000747;"
-    puts "    d:identifier \"#{@sample_properties[:id]}\";"
+    puts "    d:identifier \"#{@sample[:id]}\";"
     puts "    :additionalProperty ["
-    n = @sample_properties[:additional_properties].size
-    @sample_properties[:additional_properties].each_with_index do |p,i|
+    n = @sample[:additional_properties].size
+    @sample[:additional_properties].each_with_index do |p,i|
       puts "      a :PropertyValue;"
       puts "      :name \"#{p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]}\";"
       puts "      :value \"#{p[:property_value]}\""
@@ -100,20 +100,13 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   end
 
   def output_turtle
-    puts "b:#{@sample_properties[:id]} a :DataRecord;"
-    puts "  :dateCreated \"#{@sample_properties[:submission_date]}\"^^:Date;"
-    puts "  :dateModified \"#{@sample_properties[:last_update]}\"^^:Date;"
-    puts "  :identifier \"biosample:#{@sample_properties[:id]}\";"
-    puts "  :isPartOf [ a :Dataset ; :identifier e:samples ];"
-    puts "  :mainEntity [ a :Sample, o:OBI_0000747;"
-    puts "    :name \"#{@sample_properties[:id]}\";"
-    puts "    :identifier \"biosample:#{@sample_properties[:id]}\";"
-    puts "    d:identifier \"#{@sample_properties[:id]}\";"
-    puts "    :description \"#{@sample_properties[:description_title]}\";"
-
+    puts "b:#{@sample[:id]} a :DataRecord; :dateCreated \"#{@sample[:submission_date]}\"^^:Date; :dateModified \"#{@sample[:last_update]}\"^^:Date;"
+    puts "  :identifier \"biosample:#{@sample[:id]}\"; :isPartOf [ a :Dataset ; :identifier e:samples ];"
+    puts "  :mainEntity [ a :Sample, o:OBI_0000747; :name \"#{@sample[:id]}\";  :description \"#{@sample[:description_title]}\";"
+    puts "    :identifier \"biosample:#{@sample[:id]}\"; d:identifier \"#{@sample[:id]}\";"
     puts "    :additionalProperty"
-    n = @sample_properties[:additional_properties].size
-    @sample_properties[:additional_properties].each_with_index do |p,i|
+    n = @sample[:additional_properties].size
+    @sample[:additional_properties].each_with_index do |p,i|
       v = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
       c = i != n-1 ? "," : ""
       puts "     [ a :PropertyValue; :name \"#{v}\"; :value \"#{p[:property_value]}\" ]#{c}"
