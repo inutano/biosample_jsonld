@@ -104,28 +104,20 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     puts "  :dateCreated \"#{@sample_properties[:submission_date]}\"^^:Date;"
     puts "  :dateModified \"#{@sample_properties[:last_update]}\"^^:Date;"
     puts "  :identifier \"biosample:#{@sample_properties[:id]}\";"
-    puts "  :isPartOf ["
-    puts "    a :Dataset ;"
-    puts "    :identifier e:samples"
-    puts "  ] ;"
-    puts "  :mainEntity ["
-    puts "    a :Sample, o:OBI_0000747;"
+    puts "  :isPartOf [ a :Dataset ; :identifier e:samples ];"
+    puts "  :mainEntity [ a :Sample, o:OBI_0000747;"
     puts "    :name \"#{@sample_properties[:id]}\";"
     puts "    :identifier \"biosample:#{@sample_properties[:id]}\";"
     puts "    d:identifier \"#{@sample_properties[:id]}\";"
     puts "    :description \"#{@sample_properties[:description_title]}\";"
 
-    puts "    :additionalProperty ["
+    puts "    :additionalProperty"
     n = @sample_properties[:additional_properties].size
     @sample_properties[:additional_properties].each_with_index do |p,i|
-      puts "      a :PropertyValue;"
-      puts "      :name \"#{p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]}\";"
-      puts "      :value \"#{p[:property_value]}\""
-      if i != n-1
-        puts "    ], ["
-      end
+      v = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
+      c = i != n-1 ? "," : ""
+      puts "     [ a :PropertyValue; :name \"#{v}\"; :value \"#{p[:property_value]}\" ]#{c}"
     end
-    puts "    ] ."
-    puts "  ] ."
+    puts "  ]."
   end
 end
