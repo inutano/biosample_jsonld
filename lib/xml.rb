@@ -105,19 +105,19 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     out << " :dateCreated \"#{@sample[:submission_date]}\"^^:Date;"
     out << " :dateModified \"#{@sample[:last_update]}\"^^:Date;"
     out << " :identifier \"biosample:#{@sample[:id]}\";"
-    out << " :isPartOf [ a :Dataset ; :identifier e:samples ];"
+    out << " :isPartOf [ a :Dataset; :identifier e:samples ];"
     out << " :mainEntity [ a :Sample, o:OBI_0000747;"
-    out << "  :name \"#{@sample[:id]}\";"
-    out << "  :description \"#{@sample[:description_title]}\";"
-    out << "  :identifier \"biosample:#{@sample[:id]}\";"
-    out << "  d:identifier \"#{@sample[:id]}\";"
-    out << "  :additionalProperty"
+    out << " :name \"#{@sample[:id]}\";"
+    out << " :description \"#{@sample[:description_title]}\";"
+    out << " :identifier \"biosample:#{@sample[:id]}\";"
+    out << " d:identifier \"#{@sample[:id]}\";"
+    out << " :additionalProperty"
 
     n = @sample[:additional_properties].size
     @sample[:additional_properties].each_with_index do |p,i|
       v = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
       c = i != n-1 ? "," : ""
-      out << "   [ a :PropertyValue; :name \"#{v}\"; :value \"#{p[:property_value]}\" ]#{c}"
+      out << " [ a :PropertyValue; :name \"#{v}\"; :value \"#{p[:property_value]}\" ]#{c}"
     end
 
     out << " ]."
