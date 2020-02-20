@@ -15,6 +15,18 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     }
   end
 
+  def initialize_stack
+    @inner_text = ""
+
+    @sample = {
+      id: "",
+      submission_date: "",
+      last_update: "",
+      description_title: "",
+      additional_properties: [],
+    }
+  end
+
   #
   # SAX Event triggers
   #
@@ -22,9 +34,9 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   def start_element(name, attrs = [])
     case name
     when "BioSample"
-      sample(attrs)
+      sample_info(attrs)
     when "Attribute"
-      attribute(attrs)
+      attribute_key(attrs)
     end
   end
 
@@ -40,6 +52,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
       @sample[:description_title] = @inner_text
     when "BioSample"
       output_turtle
+      initialize_stack
     end
   end
 
@@ -56,14 +69,14 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     puts ""
   end
 
-  def sample(attrs)
+  def sample_info(attrs)
     h = attrs.to_h
     @sample[:id] = h["accession"]
     @sample[:submission_date] = h["submission_date"]
     @sample[:last_update] = h["last_update"]
   end
 
-  def attribute(attrs)
+  def attribute_key(attrs)
     h = attrs.to_h
     @sample[:additional_properties] << {
       attribute_name: h["attribute_name"],
