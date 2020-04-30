@@ -103,19 +103,21 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     out << " :description \"#{@sample[:description_title]}\";"
     out << " :identifier \"biosample:#{@sample[:id]}\";"
     out << " d:identifier \"#{@sample[:id]}\";"
-    out << " :additionalProperty"
 
     n = @sample[:additional_properties].size
     if n != 0
+      out << " :additionalProperty"
+
       @sample[:additional_properties].each_with_index do |p,i|
-        v = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
-        c = i != n-1 ? "," : ""
-        out << " [ a :PropertyValue; :name \"#{v}\"; :value \"#{p[:property_value].gsub(/"/,"'")}\" ]#{c}"
+        name  = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
+        value = p[:property_value].gsub(/"/,"'").gsub(/;/,"")
+        comma = i != n-1 ? "," : ""
+
+        out << " [ a :PropertyValue; :name \"#{name}\"; :value \"#{value}\" ]#{cxamma}"
       end
-      out << " ]."
-    else
-      out << " []."
     end
+
+    out << " ]."
 
     puts out
   end
