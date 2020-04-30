@@ -113,7 +113,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
         value = p[:property_value]
         comma = i != n-1 ? "," : ""
 
-        out << " [ a :PropertyValue; :name \"#{name}\"; :value \"#{value}\" ]#{cxamma}"
+        out << " [ a :PropertyValue; :name \"#{name}\"; :value \"#{value}\" ]#{comma}"
       end
     end
 
