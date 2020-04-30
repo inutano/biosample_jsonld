@@ -106,7 +106,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     out << " :additionalProperty"
 
     n = @sample[:additional_properties].size
-    if n == 0
+    if n != 0
       @sample[:additional_properties].each_with_index do |p,i|
         v = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
         c = i != n-1 ? "," : ""
@@ -114,7 +114,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
       end
       out << " ]."
     else
-      out << "[] ."
+      out << " []."
     end
 
     puts out
