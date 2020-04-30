@@ -110,7 +110,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
       @sample[:additional_properties].each_with_index do |p,i|
         v = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
         c = i != n-1 ? "," : ""
-        out << " [ a :PropertyValue; :name \"#{v}\"; :value \"#{p[:property_value].gsub('"',"'")}\" ]#{c}"
+        out << " [ a :PropertyValue; :name \"#{v}\"; :value \"#{p[:property_value].gsub(/"/,"'")}\" ]#{c}"
       end
       out << " ]."
     else
