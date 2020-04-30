@@ -4,7 +4,7 @@
 #   biosample.run.sh <path to biosample_set.xml.gz>
 # designed for DDBJ SC DBCLS node
 #
-set -eux
+set -x
 
 # Directories
 BASE_DIR="/home/inutano/repos/biosample_jsonld"
