@@ -41,7 +41,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   end
 
   def characters(string)
-    @inner_text = string
+    @inner_text = string.gsub(/"/,"'").gsub(/;/,"")
   end
 
   def end_element(name)
@@ -110,7 +110,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
 
       @sample[:additional_properties].each_with_index do |p,i|
         name  = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
-        value = p[:property_value].gsub(/"/,"'").gsub(/;/,"")
+        value = p[:property_value]
         comma = i != n-1 ? "," : ""
 
         out << " [ a :PropertyValue; :name \"#{name}\"; :value \"#{value}\" ]#{cxamma}"
