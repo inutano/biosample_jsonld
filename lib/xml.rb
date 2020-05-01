@@ -102,7 +102,8 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     out << " :dateModified \"#{@sample[:last_update]}\"^^:Date;\n"
     out << " :identifier \"biosample:#{@sample[:id]}\";\n"
     out << " :isPartOf [ a :Dataset; :identifier e:samples ];\n"
-    out << " :mainEntity [ a :Sample, o:OBI_0000747;\n"
+    out << " :mainEntity ["
+    out << "  a :Sample, o:OBI_0000747;\n"
     out << "  :name \"#{@sample[:id]}\";\n"
     out << "  :description \"#{@sample[:description_title]}\";\n"
     out << "  :identifier \"biosample:#{@sample[:id]}\";\n"
@@ -117,11 +118,15 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
         value = p[:property_value]
         comma = i != n-1 ? "," : ""
 
-        out << "   [ a :PropertyValue; :name \"#{name}\"; :value \"#{value}\" ]#{comma}\n"
+        out << "   [\n"
+        out << "     a :PropertyValue;\n"
+        out << "     :name \"#{name}\";\n"
+        out << "     :value \"#{value}\"\n"
+        out << "   ]#{comma}\n"
       end
     end
 
-    out << "  ].\n"
+    out << " ].\n"
 
     puts out
   end
