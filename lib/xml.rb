@@ -42,7 +42,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
 
   def characters(string)
     @inner_text = string.gsub("\n",'')
-                    .gsub(/^\s+$/)
+                    .gsub(/^\s+$/,'')
                     .gsub('\\','\\\\\\')
                     .gsub('"','\"')
                     .gsub(';','\;')
