@@ -41,7 +41,11 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   end
 
   def characters(string)
-    @inner_text = string.gsub('\\','\\\\\\').gsub('"','\"').gsub(';','\;')
+    @inner_text = string.gsub("\n",'')
+                    .gsub(/^\s+$/)
+                    .gsub('\\','\\\\\\')
+                    .gsub('"','\"')
+                    .gsub(';','\;')
   end
 
   def end_element(name)
