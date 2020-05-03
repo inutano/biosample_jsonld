@@ -1,0 +1,92 @@
+<BioSample submission_date="2014-11-01T08:19:58.796" last_update="2018-05-16T21:01:09.354" publication_date="2015-07-31T00:00:00.000" access="public" id="3157223" accession="SAMEA2388127">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMEA2388127</Id>
+    <Id db="Colorado Center for Microbial Ecology, University of Colorado at Boulder" db_label="Sample name">qiime_study_2150:CUFCON05</Id>
+    <Id db="SRA">ERS414429</Id>
+  </Ids>
+  <Description>
+    <Title>CUFCON05</Title>
+    <Organism taxonomy_id="407270" taxonomy_name="Metschnikowia gelsemii"/>
+    <Comment>
+      <Paragraph>controlCUforehead</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name abbreviation="EBI">European Bioinformatics Institute</Name>
+  </Owner>
+  <Models>
+    <Model>Generic</Model>
+  </Models>
+  <Package display_name="Generic">Generic.1.0</Package>
+  <Attributes>
+    <Attribute attribute_name="control">yes</Attribute>
+    <Attribute attribute_name="pd">22.047569</Attribute>
+    <Attribute attribute_name="&quot;PUBLIC&quot;">n</Attribute>
+    <Attribute attribute_name="menstruation_disturbance">No</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point95">FALSE</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point90">FALSE</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point55">FALSE</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point45">FALSE</Attribute>
+    <Attribute attribute_name="sample_id">1164907</Attribute>
+    <Attribute attribute_name="common_name">unclassified metagenome</Attribute>
+    <Attribute attribute_name="samp_size" harmonized_name="samp_size" display_name="sample size">0.1g</Attribute>
+    <Attribute attribute_name="weekssincestart">1</Attribute>
+    <Attribute attribute_name="idmenstruationdisturbance">No</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point99">FALSE</Attribute>
+    <Attribute attribute_name="env_feature" harmonized_name="env_local_scale" display_name="local-scale environmental context">ENVO:human-associated habitat</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point70">FALSE</Attribute>
+    <Attribute attribute_name="assigned_from_geo">n</Attribute>
+    <Attribute attribute_name="type_sample">control</Attribute>
+    <Attribute attribute_name="title">Flores Student microbiome project</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point50">FALSE</Attribute>
+    <Attribute attribute_name="altitude" harmonized_name="altitude" display_name="altitude">0.0</Attribute>
+    <Attribute attribute_name="env_biome" harmonized_name="env_broad_scale" display_name="broad-scale environmental context">ENVO:urban biome</Attribute>
+    <Attribute attribute_name="observedotus">220.9</Attribute>
+    <Attribute attribute_name="primerplate">8</Attribute>
+    <Attribute attribute_name="antibiotic_disturbance">No</Attribute>
+    <Attribute attribute_name="idantibioticdisturbance">No</Attribute>
+    <Attribute attribute_name="bodysite" harmonized_name="tissue" display_name="tissue">forehead</Attribute>
+    <Attribute attribute_name="sickness_disturbance">No</Attribute>
+    <Attribute attribute_name="sample_name" harmonized_name="sample_name" display_name="sample name">CUFCON05</Attribute>
+    <Attribute attribute_name="taxon_id">408168</Attribute>
+    <Attribute attribute_name="anytimeseries">No</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point30">FALSE</Attribute>
+    <Attribute attribute_name="tonguetimeseries">No</Attribute>
+    <Attribute attribute_name="age_unit">78</Attribute>
+    <Attribute attribute_name="sequencecountabove10000">43532</Attribute>
+    <Attribute attribute_name="elevation" harmonized_name="elev" display_name="elevation">1624.1</Attribute>
+    <Attribute attribute_name="description" harmonized_name="description" display_name="description">controlCUforehead</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point15">FALSE</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point85">FALSE</Attribute>
+    <Attribute attribute_name="shannonevenness">2.089772249</Attribute>
+    <Attribute attribute_name="samplemenstruationdisturbance">No</Attribute>
+    <Attribute attribute_name="palmtimeseries">No</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point80">FALSE</Attribute>
+    <Attribute attribute_name="latitude">40.015</Attribute>
+    <Attribute attribute_name="guttimeseries">No</Attribute>
+    <Attribute attribute_name="illumina_technology">HiSeq</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point10">TRUE</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point40">FALSE</Attribute>
+    <Attribute attribute_name="ambiguoustimepoint">No</Attribute>
+    <Attribute attribute_name="host_subject_id" harmonized_name="host_subject_id" display_name="host subject id">2150:controlCU</Attribute>
+    <Attribute attribute_name="sampleplate">31</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point05">TRUE</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point35">FALSE</Attribute>
+    <Attribute attribute_name="sampleantibioticdisturbance">No</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point65">FALSE</Attribute>
+    <Attribute attribute_name="country" harmonized_name="geo_loc_name" display_name="geographic location">GAZ:United States of America</Attribute>
+    <Attribute attribute_name="university">CU</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point75">FALSE</Attribute>
+    <Attribute attribute_name="well">E12</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point60">FALSE</Attribute>
+    <Attribute attribute_name="longitude">-105.271</Attribute>
+    <Attribute attribute_name="foreheadtimeseries">No</Attribute>
+    <Attribute attribute_name="personalidsicknessdisturbance">No</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point20">FALSE</Attribute>
+    <Attribute attribute_name="mislabeledprobabove0point25">FALSE</Attribute>
+    <Attribute attribute_name="env_matter">ENVO:sebum</Attribute>
+    <Attribute attribute_name="samplesicknessdisturbance">No</Attribute>
+    <Attribute attribute_name="anonymized_name">CUFCON05</Attribute>
+  </Attributes>
+  <Status status="live" when="2015-09-10T08:23:37"/>
+</BioSample>

@@ -1,0 +1,72 @@
+<BioSample access="public" submission_date="2014-04-29T13:10:29.226" publication_date="2014-06-11T00:00:00.000" last_update="2019-07-21T02:18:51.242" id="2739938" accession="SAMN02739938">
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN02739938</Id>
+    <Id db_label="Sample name">MMETSP1311</Id>
+    <Id db="SRA">SRS621584</Id>
+  </Ids>
+  <Description>
+    <Title>MIGS Eukaryotic sample from uncultured eukaryote</Title>
+    <Organism taxonomy_id="100272" taxonomy_name="uncultured eukaryote">
+      <OrganismName>uncultured eukaryote</OrganismName>
+    </Organism>
+    <Comment>
+      <Paragraph>Keywords: GSC:MIxS;MIGS:5.0</Paragraph>
+    </Comment>
+  </Description>
+  <Owner>
+    <Name>NCGR</Name>
+    <Contacts>
+      <Contact email="cjb@ncgr.org">
+        <Name>
+          <First>Callum</First>
+          <Last>Bell</Last>
+        </Name>
+      </Contact>
+    </Contacts>
+  </Owner>
+  <Models>
+    <Model version="3.0">MIGS.eu</Model>
+  </Models>
+  <Package display_name="MIGS: eukaryote; version 5.0">MIGS.eu.5.0</Package>
+  <Attributes>
+    <Attribute attribute_name="pi_first_name">Will\ie</Attribute>
+    <Attribute attribute_name="clonal">no</Attribute>
+    <Attribute attribute_name="cDNA_adapter_5'">none</Attribute>
+    <Attribute attribute_name="exp_ammonium"></Attribute>
+    <Attribute attribute_name="exp_urea"></Attribute>
+    <Attribute attribute_name="estimated_size" harmonized_name="estimated_size" display_name="estimated size">missing</Attribute>
+    <Attribute attribute_name="strain" harmonized_name="strain" display_name="strain">RCC856</Attribute>
+    <Attribute attribute_name="exp_total_fe"></Attribute>
+    <Attribute attribute_name="exp_date">15-Jan-2012</Attribute>
+    <Attribute attribute_name="ploidy" harmonized_name="ploidy" display_name="ploidy">missing</Attribute>
+    <Attribute attribute_name="cDNA_adapter_3'">none</Attribute>
+    <Attribute attribute_name="lat_lon" harmonized_name="lat_lon" display_name="latitude and longitude">8.333333333 S 141.25 W</Attribute>
+    <Attribute attribute_name="exp_silicate"></Attribute>
+    <Attribute attribute_name="exp_light">114 (umol photons/m^2/s)</Attribute>
+    <Attribute attribute_name="collection_date" harmonized_name="collection_date" display_name="collection date">29-Oct-1904</Attribute>
+    <Attribute attribute_name="exp_salinity">35 psu</Attribute>
+    <Attribute attribute_name="feature" harmonized_name="env_local_scale" display_name="local-scale environmental context">missing</Attribute>
+    <Attribute attribute_name="camera_sample_acc">CAM_SMPL_002940</Attribute>
+    <Attribute attribute_name="exp_growth_medium">K</Attribute>
+    <Attribute attribute_name="exp_phosphate"></Attribute>
+    <Attribute attribute_name="exp_day_portion_of_day">12 hr</Attribute>
+    <Attribute attribute_name="exp_night_portion_of_day">12 hr</Attribute>
+    <Attribute attribute_name="project_name" harmonized_name="project_name" display_name="project name">Marine microbial eukaryote transcriptome sequencing project</Attribute>
+    <Attribute attribute_name="geo_loc_name" harmonized_name="geo_loc_name" display_name="geographic location">Pacific Ocean</Attribute>
+    <Attribute attribute_name="exp_temperature">20 C</Attribute>
+    <Attribute attribute_name="material" harmonized_name="env_medium" display_name="environmental medium">missing</Attribute>
+    <Attribute attribute_name="ref_biomaterial" harmonized_name="ref_biomaterial" display_name="reference for biomaterial">missing</Attribute>
+    <Attribute attribute_name="num_replicons" harmonized_name="num_replicons" display_name="number of replicons">missing</Attribute>
+    <Attribute attribute_name="biomaterial_provider" harmonized_name="biomaterial_provider" display_name="biomaterial provider">Willie Wilson</Attribute>
+    <Attribute attribute_name="axenic">no</Attribute>
+    <Attribute attribute_name="exp_trace_elements_total"></Attribute>
+    <Attribute attribute_name="isol_growth_condt" harmonized_name="isol_growth_condt" display_name="isolation and growth condition">missing</Attribute>
+    <Attribute attribute_name="environment_biome" harmonized_name="env_broad_scale" display_name="broad-scale environmental context">Aquatic: marine</Attribute>
+    <Attribute attribute_name="propagation" harmonized_name="propagation" display_name="propagation">missing</Attribute>
+    <Attribute attribute_name="depth" harmonized_name="depth" display_name="depth">10 m</Attribute>
+    <Attribute attribute_name="exp_nitrate"></Attribute>
+    <Attribute attribute_name="pi_last_name">Wilson</Attribute>
+  </Attributes>
+  <Links/>
+  <Status status="live" when="2014-06-11T06:52:10.017"/>
+</BioSample>
