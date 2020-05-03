@@ -42,11 +42,9 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   end
 
   def characters(string)
-    @inner_text = CGI.unescapeHTML(string).gsub("\n",'')
-                    .gsub(/^\s+$/,'')
-                    .gsub('\\','\\\\\\')
-                    .gsub('"','\"')
-                    .gsub(';','\;')
+    remove_whitespaces = string.gsub("\n",'').gsub(/^\s+$/,'')
+    unescape_chars = CGI.unescapeHTML(remove_whitespaces)
+    @inner_text = unescape_chars.gsub('\\','\\\\\\').gsub('"','\"').gsub(';','\;')
   end
 
   def end_element(name)
