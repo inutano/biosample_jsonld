@@ -1,4 +1,5 @@
 require 'nokogiri'
+require "cgi/escape"
 
 class BioSampleXML < Nokogiri::XML::SAX::Document
   def initialize
@@ -41,7 +42,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   end
 
   def characters(string)
-    @inner_text = string.gsub("\n",'')
+    @inner_text = CGI.unescapeHTML(string).gsub("\n",'')
                     .gsub(/^\s+$/,'')
                     .gsub('\\','\\\\\\')
                     .gsub('"','\"')
