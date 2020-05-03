@@ -19,3 +19,16 @@ if [[ ! -e "${ttl_path}" ]]; then
   cd "/home/inutano/repos/biosample_jsonld"
   ./bs2ld xml2ttl <(cat <(echo "<BioSampleSet>") <(cat "${XML_PATH}" | sed -n "${job_param}")) > "${ttl_path}"
 fi
+
+# validate
+validation_output="${ttl_path}.validation"
+valid_value='Validator finished with 0 warnings and 0 errors.'
+
+module load docker
+image="quay.io/inutano/turtle-validator:v1.0"
+
+docker run --rm -v $(dirname "${ttl_path}"):/work "${image}" ttl $(basename "${ttl_path}") > "${validation_output}"
+
+if [[ $(cat "${validation_output}") == "${valid_value}" ]]; then
+  rm -f "${validation_output}"
+fi
