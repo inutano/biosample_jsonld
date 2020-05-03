@@ -88,9 +88,9 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
 
   def attribute_key(attrs)
     h = attrs.to_h
-    a_name = h["attribute_name"] ? escape_chars(h["attribute_name"]) : ""
-    h_name = h["harmonized_name"] ? escape_chars(h["harmonized_name"]) : ""
-    d_name = h["display_name"] ? escape_chars(h["display_name"]) : ""
+    a_name = h["attribute_name"] ? escape_chars(h["attribute_name"]) : nil
+    h_name = h["harmonized_name"] ? escape_chars(h["harmonized_name"]) : nil
+    d_name = h["display_name"] ? escape_chars(h["display_name"]) : nil
     @sample[:additional_properties] << {
       attribute_name: a_name,
       harmonized_name: h_name,
