@@ -42,9 +42,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   end
 
   def characters(string)
-    remove_whitespaces = string.gsub("\n",'').gsub(/^\s+$/,'')
-    unescape_chars = CGI.unescapeHTML(remove_whitespaces)
-    @inner_text = unescape_chars.gsub('\\','\\\\\\').gsub('"','\"').gsub(';','\;')
+    @inner_text = escape_chars(string)
   end
 
   def end_element(name)
@@ -62,6 +60,15 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   #
   # functions
   #
+
+  def escape_chars(char)
+    CGI.unescapeHTML(char)
+                    .gsub("\n",'')
+                    .gsub(/^\s+$/,'')
+                    .gsub('\\','\\\\\\')
+                    .gsub('"','\"')
+                    .gsub(';','\;')
+  end
 
   def write_prefixes
     puts "@prefix : <http://schema.org/> ."
@@ -82,9 +89,9 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   def attribute_key(attrs)
     h = attrs.to_h
     @sample[:additional_properties] << {
-      attribute_name: h["attribute_name"],
-      harmonized_name: h["harmonized_name"],
-      display_name: h["display_name"],
+      attribute_name: escape_chars(h["attribute_name"]),
+      harmonized_name: escape_chars(h["harmonized_name"]),
+      display_name: escape_chars(h["display_name"]),
     }
   end
 
