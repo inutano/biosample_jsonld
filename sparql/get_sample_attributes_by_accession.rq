@@ -1,0 +1,13 @@
+prefix : <http://schema.org/>
+
+select ?name ?value
+where {
+  <http://identifiers.org/biosample/SAMD00063002> a :DataRecord ;
+    :mainEntity [
+      :additionalProperty [
+        a :PropertyValue ;
+        :name ?name ;
+        :value ?value ;
+      ]
+    ] .
+}
