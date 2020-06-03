@@ -15,6 +15,12 @@ mkdir -p "${WORK_DIR}" && cd "${WORK_DIR}"
 
 # Unarchive biosample_set.xml.gz
 GZ_PATH="${1}"
+if [[ ! -e "${GZ_PATH}" ]]; then
+  url="ftp://ftp.ncbi.nlm.nih.gov/biosample/biosample_set.xml.gz"
+  wget ${url}
+  GZ_PATH="${WORK_DIR}/$(basename ${url})"
+fi
+
 XML_PATH="${WORK_DIR}/$(basename "${GZ_PATH}" .gz)"
 if [[ ! -e "${XML_PATH}" ]]; then
   gunzip -c "${GZ_PATH}" > "${XML_PATH}"
