@@ -48,3 +48,15 @@ find ${WORK_DIR} -name "bs.*" | sort | while read jobconf; do
     -t 1-$(wc -l "${jobconf}" | awk '$0=$1'):1 \
     "${JOB_SCRIPT}" "${XML_PATH}" "${jobconf}"
 done
+
+#
+# Wait for jobs to finish
+#
+while :; do
+  sleep 30
+  running_jobs=$(qstat | grep "bs.")
+  if [[ -z ${running_jobs} ]]; then
+    printf "All jobs finished."
+    break
+  fi
+done
