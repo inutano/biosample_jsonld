@@ -19,7 +19,7 @@ if [[ ! -e "${ttl_path}" ]]; then
   tmp_xml=${ttl_path}.xml
   printf "<BioSampleSet>\n$(cat "${XML_PATH}" | sed -n "${job_param}")" > ${tmp_xml}
 
-  docker run --security-opt seccomp=unconfined --rm -t \
+  docker run --security-opt seccomp=unconfined --rm \
     -e TZ=Asia/Tokyo \
     --volume ${TTL_DIR}:/work \
     "quay.io/inutano/biosample_jsonld:v1.3" \
@@ -34,7 +34,7 @@ fi
 validation_output="${ttl_path}.validation"
 valid_value='Validator finished with 0 warnings and 0 errors.'
 
-docker run --security-opt seccomp=unconfined --rm -t \
+docker run --security-opt seccomp=unconfined --rm \
    -v $(dirname "${ttl_path}"):/work \
    "quay.io/inutano/turtle-validator:v1.0" \
    ttl \
