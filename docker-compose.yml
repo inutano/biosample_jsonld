@@ -1,13 +1,15 @@
 version: '3'
 services:
   biosample-ld:
-    image: ruby:2.6.1-stretch
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: quay.io/inutano/biosample_jsonld
     container_name: biosample-ld
     user: ${UID}
     volumes:
       - .:/work
     command:
-      - "sh"
-      - "/work/entrypoint.sh"
-      - "/work"
+      - "bs2ld"
+      - "jsonld"
       - "SAMD00000345"
