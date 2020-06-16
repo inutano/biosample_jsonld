@@ -1,44 +1,50 @@
 #!/bin/bash
 #
 # usage:
-#   biosample.run.sh <path to biosample_set.xml.gz>
+#   biosample.run.sh [base_dir]
 # designed for DDBJ SC DBCLS node
 #
-set -x
+# set -x
 
-# Directories
-BASE_DIR="/home/inutano/repos/biosample_jsonld"
-DATA_DIR="${BASE_DIR}/data"
-WORK_DIR="${DATA_DIR}/$(date +%Y%m%d)"
-SH_DIR="${BASE_DIR}/sh"
-mkdir -p "${WORK_DIR}" && cd "${WORK_DIR}"
+#
+# Setup directories
+#
+SCRIPT_DIR=$(cd $(dirname ${0}) && pwd -P)
+JOB_SCRIPT="${SCRIPT_DIR}/biosample.job.sh"
 
-# Unarchive biosample_set.xml.gz
-GZ_PATH="${1}"
-if [[ ! -e "${GZ_PATH}" ]]; then
-  url="ftp://ftp.ncbi.nlm.nih.gov/biosample/biosample_set.xml.gz"
-  wget ${url}
-  GZ_PATH="${WORK_DIR}/$(basename ${url})"
+if [[ -z ${1} ]]; then
+  BASE_DIR="/tmp"
+else
+  BASE_DIR=${1}
 fi
 
-XML_PATH="${WORK_DIR}/$(basename "${GZ_PATH}" .gz)"
-if [[ ! -e "${XML_PATH}" ]]; then
-  gunzip -c "${GZ_PATH}" > "${XML_PATH}"
-fi
-
-# Create jobconf file
+WORK_DIR="${BASE_DIR}/$(date +%Y%m%d)"
+mkdir -p "${WORK_DIR}"
 cd "${WORK_DIR}"
+
+#
+# Download xml file
+#
+BS_XML_URL="ftp://ftp.ncbi.nlm.nih.gov/biosample/biosample_set.xml.gz"
+XML_PATH="${WORK_DIR}/$(basename "${BS_XML_URL}" .gz)"
+wget -O - ${BS_XML_URL} | gunzip -c > ${XML_PATH}
+
+#
+# Create jobconf file if not found
+#
 if [[ ! -e "${WORK_DIR}/bs.00" ]]; then
   cat "${XML_PATH}" | grep -n '</BioSample>' |\
     awk -F':' 'BEGIN{ start=3 } NR%10000==0 { print start "," $1 "p"; start=$1+1 }' |\
     split -l 5000 -d - "bs."
 fi
 
+#
 # Run on UGE
+#
 source "/home/geadmin/UGED/uged/common/settings.sh"
 find ${WORK_DIR} -name "bs.*" | sort | while read jobconf; do
   jobname=$(basename ${jobconf})
   qsub -N "${jobname}" -o /dev/null -pe def_slot 1 -l s_vmem=4G -l mem_req=4G \
     -t 1-$(wc -l "${jobconf}" | awk '$0=$1'):1 \
-    "${SH_DIR}/biosample.job.sh" "${XML_PATH}" "${jobconf}"
+    "${JOB_SCRIPT}" "${XML_PATH}" "${jobconf}"
 done

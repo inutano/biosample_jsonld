@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -S /bin/bash -j y
-set -eux
+# set -eux
 
 XML_PATH="${1}"
 jobconf="${2}"
