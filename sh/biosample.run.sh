@@ -54,7 +54,7 @@ while :; do
   sleep 30
   running_jobs=$(qstat | grep "bs.")
   if [[ -z ${running_jobs} ]]; then
-    printf "All jobs finished."
+    printf "All jobs finished.\n"
     break
   fi
 done
