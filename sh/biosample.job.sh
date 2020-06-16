@@ -5,7 +5,7 @@ module load docker
 
 XML_PATH="${1}"
 jobconf="${2}"
-WORK_DIR="$(dirname ${XML_PATH})"
+WORK_DIR="$(cd $(dirname ${XML_PATH}) && pwd -P)"
 
 TTL_DIR="${WORK_DIR}/ttl"
 mkdir -p "${TTL_DIR}"
