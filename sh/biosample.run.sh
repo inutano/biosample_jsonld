@@ -15,7 +15,7 @@ JOB_SCRIPT="${SCRIPT_DIR}/biosample.job.sh"
 if [[ -z ${1} ]]; then
   WORK_DIR="/tmp/biosample_jsonld/$(date +%Y%m%d)"
 else
-  WORK_DIR=$(cd $(dirname ${1}) && pwd -P)
+  WORK_DIR=$(cd ${1} && pwd -P)
 fi
 mkdir -p "${WORK_DIR}"
 cd "${WORK_DIR}"
