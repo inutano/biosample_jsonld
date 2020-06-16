@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # usage:
-#   biosample.run.sh [base_dir]
+#   biosample.run.sh [work_dir]
 # designed for DDBJ SC DBCLS node
 #
 # set -x
@@ -13,12 +13,10 @@ SCRIPT_DIR=$(cd $(dirname ${0}) && pwd -P)
 JOB_SCRIPT="${SCRIPT_DIR}/biosample.job.sh"
 
 if [[ -z ${1} ]]; then
-  BASE_DIR="/tmp"
+  WORK_DIR="/tmp/biosample_jsonld/$(date +%Y%m%d)"
 else
-  BASE_DIR=${1}
+  WORK_DIR=${1}
 fi
-
-WORK_DIR="${BASE_DIR}/$(date +%Y%m%d)"
 mkdir -p "${WORK_DIR}"
 cd "${WORK_DIR}"
 
