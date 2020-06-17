@@ -23,9 +23,12 @@ cd "${WORK_DIR}"
 #
 # Download xml file
 #
+
 BS_XML_URL="ftp://ftp.ncbi.nlm.nih.gov/biosample/biosample_set.xml.gz"
 XML_PATH="${WORK_DIR}/$(basename "${BS_XML_URL}" .gz)"
-wget -O - ${BS_XML_URL} | gunzip -c > ${XML_PATH}
+if [[ ! -e ${XML_PATH} ]]; then
+  wget -O - ${BS_XML_URL} | gunzip -c > ${XML_PATH}
+fi
 
 #
 # Create jobconf file if not found
