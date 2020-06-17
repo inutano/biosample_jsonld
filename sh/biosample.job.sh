@@ -33,8 +33,8 @@ printf "<BioSampleSet>\n$(cat "${XML_PATH}" | sed -n "${job_param}")" > ${tmp_xm
 #
 docker run --security-opt seccomp=unconfined --rm \
   -e TZ=Asia/Tokyo \
-  --volume ${TTL_DIR}:/work \
-  "quay.io/inutano/biosample_jsonld:v1.3" \
+  --volume ${TMPDIR}:/work \
+  "quay.io/inutano/biosample_jsonld:v1.8" \
   bs2ld \
   xml2ttl \
   /work/$(basename ${tmp_xml}) \
