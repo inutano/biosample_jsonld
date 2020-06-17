@@ -46,7 +46,7 @@ docker run --security-opt seccomp=unconfined --rm \
 validation_output="${ttl_tmp_path}.validation"
 valid_value='Validator finished with 0 warnings and 0 errors.'
 
-docker run --security-opt seccomp=unconfined --rm \ # do not use tty, it adds a carriage return to the end of lines
+docker run --security-opt seccomp=unconfined --rm \
   -v $(dirname "${ttl_tmp_path}"):/work \
   "quay.io/inutano/turtle-validator:v1.0" \
   ttl \
