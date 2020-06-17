@@ -27,7 +27,8 @@ cd "${WORK_DIR}"
 BS_XML_URL="ftp://ftp.ncbi.nlm.nih.gov/biosample/biosample_set.xml.gz"
 XML_PATH="${WORK_DIR}/$(basename "${BS_XML_URL}" .gz)"
 if [[ ! -e ${XML_PATH} ]]; then
-  wget -O - ${BS_XML_URL} | gunzip -c > ${XML_PATH}
+  lftp -c "open $(dirname ${BS_XML_URL}) && pget -n 8 $(basename ${BS_XML_URL})"
+  gunzip -c $(basename ${BS_XML_URL}) > ${XML_PATH}
 fi
 
 #
