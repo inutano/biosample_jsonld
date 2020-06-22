@@ -5,8 +5,7 @@ WORKDIR /app
 RUN apt-get update -y && \
     apt-get install -y \
       libffi-dev \
-      build-essential \
-      libpq-dev && \
+      build-essential && \
     bundle install
 RUN ln -s /app/bs2ld /usr/bin
 CMD ["bs2ld"]
