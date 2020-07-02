@@ -15,6 +15,7 @@ JOB_SCRIPT="${SCRIPT_DIR}/biosample.job.sh"
 if [[ -z ${1} ]]; then
   WORK_DIR="/home/inutano/repos/biosample_jsonld/data/$(date +%Y%m%d)"
 else
+  mkdir -p "${1}"
   WORK_DIR=$(cd ${1} && pwd -P)
 fi
 mkdir -p "${WORK_DIR}"
