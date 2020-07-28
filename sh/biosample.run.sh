@@ -36,7 +36,7 @@ fi
 # Create jobconf file if not found
 #
 if [[ ! -e "${WORK_DIR}/bs.00" ]]; then
-  cat "${XML_PATH}" | grep -n '</BioSample>' |\
+  grep -n '</BioSample>' "${XML_PATH}" |\
     awk -F':' 'BEGIN{ start=3 } NR%10000==0 { print start "," $1 "p"; start=$1+1 }' |\
     split -l 5000 -d - "bs."
 fi
