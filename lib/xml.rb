@@ -68,15 +68,20 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
                     .gsub('\\','\\\\\\')
                     .gsub('"','\"')
                     .gsub(';','\;')
+                    .gsub('(','\(')
+                    .gsub(')','\)')
   end
 
   def write_prefixes
-    puts "@prefix : <http://schema.org/> ."
-    puts "@prefix e: <https://www.ebi.ac.uk/biosamples/> ."
-    puts "@prefix b: <http://identifiers.org/biosample/> ."
-    puts "@prefix o: <http://purl.obolibrary.org/obo/> ."
-    puts "@prefix d: <http://purl.org/dc/terms/> ."
-    puts ""
+    puts <<~TTLPREFIX
+      @prefix : <http://schema.org/> .
+      @prefix idorg: <http://identifiers.org/biosample/> .
+      @prefix dct: <http://purl.org/dc/terms/> .
+      @prefix ddbj: <http://ddbj.nig.ac.jp/biosample/> .
+      @prefix ddbjont: <http://ddbj.nig.ac.jp/ontologies/biosample/> .
+      @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+    TTLPREFIX
   end
 
   def sample_info(attrs)
@@ -100,42 +105,66 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
 
   def attribute_value
     h = @sample[:additional_properties].pop
-    h[:property_value] = @inner_text
+    h[:property_value] = escape_chars(@inner_text)
     @sample[:additional_properties] << h
   end
 
+  # idorg:SAMD00109171
+  # a ddbj:BioSampleRecord ;
+  # :identifier "SAMD00109171" ;
+  # dct:identifier "SAMD00109171" ;
+  # :description "Bisulfite sequencing sample of iPSC_1" ;
+  # rdfs:label "Bisulfite sequencing sample of iPSC_1" ;
+  #
+  # :dateCreated "2019-01-16T14:05:50.947"^^:Date ;
+  # :dateModified "2020-06-28T05:02:22.320"^^:Date ;
+  #
+  # :additionalProperty
+  #   ddbj:SAMD0010917\#sample_name,
+  #   ddbj:SAMD0010917\#cell_line,
+  #   ddbj:SAMD0010917\#cell_type,
+  #   ddbj:SAMD0010917\#replicate,
+  #   ddbj:SAMD0010917\#sex .
+  #
+  # ddbj:SAMD0010917\#sample_name a :PropertyValue ;
+  #    :name "sample_name" ;
+  #    :value "iPSC_1" .
+
   def output_turtle
-    out = ""
-    out << "b:#{@sample[:id]} a :DataRecord;\n"
-    out << " :dateCreated \"#{@sample[:submission_date]}\"^^:Date;\n"
-    out << " :dateModified \"#{@sample[:last_update]}\"^^:Date;\n"
-    out << " :identifier \"biosample:#{@sample[:id]}\";\n"
-    out << " :isPartOf [ a :Dataset; :identifier e:samples ];\n"
-    out << " :mainEntity ["
-    out << "  a :Sample, o:OBI_0000747;\n"
-    out << "  :name \"#{@sample[:id]}\";\n"
-    out << "  :description \"#{@sample[:description_title]}\";\n"
-    out << "  :identifier \"biosample:#{@sample[:id]}\";\n"
-    out << "  d:identifier \"#{@sample[:id]}\";\n"
+    out = "\n"
+    out << "idorg:#{@sample[:id]}\n"
+    out << "  a ddbj:BioSampleRecord ;\n"
+    out << "  :identifier \"biosample:#{@sample[:id]}\" ;\n"
+    out << "  dct:identifier \"#{@sample[:id]}\" ;\n"
+    out << "  :description \"#{@sample[:description_title]}\" ;\n"
+    out << "  rdfs:label \"#{@sample[:description_title]}\" ;\n"
+
+    out << "  :dateCreated \"#{@sample[:submission_date]}\"^^:DateTime ;\n"
+    out << "  :dateModified \"#{@sample[:last_update]}\"^^:DateTime"
 
     n = @sample[:additional_properties].size
-    if n != 0
+    if n > 0
+      out << " ;\n" # Close :dateModified statement
       out << "  :additionalProperty\n"
 
       @sample[:additional_properties].each_with_index do |p,i|
+        name   = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
+        suffix = i != n-1 ? ',' : '.'
+        out << "    ddbj:#{@sample[:id]}\\##{name.gsub("\s",'_')} #{suffix}\n"
+      end
+
+      out << "\n"
+
+      @sample[:additional_properties].each do |p|
         name  = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
         value = p[:property_value]
-        comma = i != n-1 ? "," : ""
-
-        out << "   [\n"
-        out << "     a :PropertyValue;\n"
-        out << "     :name \"#{name}\";\n"
-        out << "     :value \"#{value}\"\n"
-        out << "   ]#{comma}\n"
+        out << "ddbj:#{@sample[:id]}\\##{name.gsub("\s",'_')} a :PropertyValue ;\n"
+        out << "  :name \"#{name}\" ;\n"
+        out << "  :value \"#{value}\" .\n"
       end
+    else
+      out << " .\n" # Close :dateModified statement
     end
-
-    out << " ].\n"
 
     puts out
   end
