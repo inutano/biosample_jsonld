@@ -80,6 +80,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
       @prefix ddbj: <http://ddbj.nig.ac.jp/biosample/> .
       @prefix ddbjont: <http://ddbj.nig.ac.jp/ontologies/biosample/> .
       @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+      @prefix xsd: <https://www.w3.org/2001/XMLSchema#> .
 
     TTLPREFIX
   end
@@ -89,6 +90,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     @sample[:id] = h["accession"]
     @sample[:submission_date] = h["submission_date"]
     @sample[:last_update] = h["last_update"]
+    @sample[:publication_date] = h["publication_date"]
   end
 
   def attribute_key(attrs)
@@ -134,13 +136,17 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
     out = "\n"
     out << "idorg:#{@sample[:id]}\n"
     out << "  a ddbj:BioSampleRecord ;\n"
-    out << "  :identifier \"biosample:#{@sample[:id]}\" ;\n"
+
+    # out << "  :identifier \"biosample:#{@sample[:id]}\" ;\n"
     out << "  dct:identifier \"#{@sample[:id]}\" ;\n"
-    out << "  :description \"#{@sample[:description_title]}\" ;\n"
+
+    # out << "  :description \"#{@sample[:description_title]}\" ;\n"
+    out << "  dct:description \"#{@sample[:description_title]}\" ;\n"
     out << "  rdfs:label \"#{@sample[:description_title]}\" ;\n"
 
-    out << "  :dateCreated \"#{@sample[:submission_date]}\"^^:DateTime ;\n"
-    out << "  :dateModified \"#{@sample[:last_update]}\"^^:DateTime"
+    out << "  dct:created \"#{@sample[:submission_date]}\"^^xsd:dateTime ;\n"
+    out << "  dct:modified \"#{@sample[:last_update]}\"^^xsd:dateTime ;\n"
+    out << "  dct:issued \"#{@sample[:publication_date]}\"^^xsd:dateTime"
 
     n = @sample[:additional_properties].size
     if n > 0
@@ -148,7 +154,8 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
       out << "  :additionalProperty\n"
 
       @sample[:additional_properties].each_with_index do |p,i|
-        name   = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
+        name_raw   = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
+        name = URI.encode_www_form_component(name_raw).gsub('+','\\\+')
         suffix = i != n-1 ? ',' : '.'
         out << "    ddbj:#{@sample[:id]}\\##{name.gsub("\s",'_')} #{suffix}\n"
       end
