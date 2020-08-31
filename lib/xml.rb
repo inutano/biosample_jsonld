@@ -112,7 +112,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   end
 
   # idorg:SAMD00109171
-  # a ddbj:BioSampleRecord ;
+  # a ddbjont:BioSampleRecord ;
   # :identifier "SAMD00109171" ;
   # dct:identifier "SAMD00109171" ;
   # :description "Bisulfite sequencing sample of iPSC_1" ;
@@ -122,20 +122,20 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
   # :dateModified "2020-06-28T05:02:22.320"^^:Date ;
   #
   # :additionalProperty
-  #   ddbj:SAMD0010917\#sample_name,
-  #   ddbj:SAMD0010917\#cell_line,
-  #   ddbj:SAMD0010917\#cell_type,
-  #   ddbj:SAMD0010917\#replicate,
-  #   ddbj:SAMD0010917\#sex .
+  #   ddbjont:SAMD0010917\#sample_name,
+  #   ddbjont:SAMD0010917\#cell_line,
+  #   ddbjont:SAMD0010917\#cell_type,
+  #   ddbjont:SAMD0010917\#replicate,
+  #   ddbjont:SAMD0010917\#sex .
   #
-  # ddbj:SAMD0010917\#sample_name a :PropertyValue ;
+  # ddbjont:SAMD0010917\#sample_name a :PropertyValue ;
   #    :name "sample_name" ;
   #    :value "iPSC_1" .
 
   def output_turtle
     out = "\n"
     out << "idorg:#{@sample[:id]}\n"
-    out << "  a ddbj:BioSampleRecord ;\n"
+    out << "  a ddbjont:BioSampleRecord ;\n"
 
     # out << "  :identifier \"biosample:#{@sample[:id]}\" ;\n"
     out << "  dct:identifier \"#{@sample[:id]}\" ;\n"
