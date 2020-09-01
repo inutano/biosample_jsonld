@@ -154,18 +154,20 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
       out << "  :additionalProperty\n"
 
       @sample[:additional_properties].each_with_index do |p,i|
-        name_raw   = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
-        name = URI.encode_www_form_component(name_raw).gsub('+','\\\+')
+        name = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
+        qname = URI.encode_www_form_component(name)
         suffix = i != n-1 ? ',' : '.'
-        out << "    ddbj:#{@sample[:id]}\\##{name.gsub("\s",'_')} #{suffix}\n"
+        out << "    <http://ddbj.nig.ac.jp/biosample/#{@sample[:id]}##{qname}> #{suffix}\n"
       end
 
       out << "\n"
 
       @sample[:additional_properties].each do |p|
         name  = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
+        qname = URI.encode_www_form_component(name)
         value = p[:property_value]
-        out << "ddbj:#{@sample[:id]}\\##{name.gsub("\s",'_')} a :PropertyValue ;\n"
+        out << "<http://ddbj.nig.ac.jp/biosample/#{@sample[:id]}##{qname} a :PropertyValue ;\n"
+
         out << "  :name \"#{name}\" ;\n"
         out << "  :value \"#{value}\" .\n"
       end
