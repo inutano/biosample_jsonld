@@ -166,7 +166,7 @@ class BioSampleXML < Nokogiri::XML::SAX::Document
         name  = p[:harmonized_name] ? p[:harmonized_name] : p[:attribute_name]
         qname = URI.encode_www_form_component(name)
         value = p[:property_value]
-        out << "<http://ddbj.nig.ac.jp/biosample/#{@sample[:id]}##{qname} a :PropertyValue ;\n"
+        out << "<http://ddbj.nig.ac.jp/biosample/#{@sample[:id]}##{qname}> a :PropertyValue ;\n"
 
         out << "  :name \"#{name}\" ;\n"
         out << "  :value \"#{value}\" .\n"
